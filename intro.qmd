@@ -1,0 +1,60 @@
+# Introduction
+
+The following technical setup is needed to pursue a local simulation on your computer:  
+
+-  A local installation of the R statistical programming language [@R-base] is 
+   required.  
+   The current version can be downloaded from [https://cran.r-studio.org](https://cran.r-project.org/). 
+   
+- In addition, we recommend the use of RStudio Desktop (an integrated development environment) 
+  which provides an excellent user interface for working with R.  
+  It is available from here: [https://www.rstudio.com/products/rstudio/download/](https://www.rstudio.com/products/rstudio/download/).   
+
+
+Both R and RStudio (as well as further used R packages) are free software.  
+
+
+To follow this tutorial, we assume basic familiarity with the use of the R language.  
+
+## Required R packages
+
+The following R packages are needed to run the simulation: 
+
+  - {fidelitysim} [@R-fidelitysim] - holds packaged code for the simulation experiment    
+
+It uses and builds upon: 
+
+  - {samplingDataCRT} v1.0 [@R-samplingDataCRT]  - for sampling data matrices  
+  
+  - {lme4} [@R-lme4]  - for linear model estimation  
+  
+  - {ggplot2} [@R-ggplot2] - for visualizing the results  
+
+
+You can install the necessary packages by:  
+
+```{r, eval = F}
+# to install {fidelitysim} we need the {remotes}-package
+install.packages("remotes")
+
+# then install {fidelitysim} from GitHub
+remotes::install_github("INS-Basel/fidelitysim")
+```
+
+The other packages are installed from CRAN:  
+
+```{r, eval = F}
+# install packages from CRAN
+install.packages(c("samplingDataCRT", "lme4", "ggplot2"))
+```
+
+Consequently, to start the calculation the package needs to be loaded by:  
+
+```{r, eval = F, warning=F}
+library(fidelitysim) 
+```
+
+## Other considerations
+
+The local simulation can - depending on the number of clusters - take up to 
+10-12 hours when the recommended number of iterations of 10,000 is used. 

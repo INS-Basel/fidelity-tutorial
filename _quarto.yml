@@ -1,0 +1,30 @@
+project:
+  type: book
+
+book:
+  title: "Fidelity in Hybrid Implementation Trials: Technical Guidance for 
+    Implementation Researchers"
+  author: 
+    - name: "Diana Trutschel"
+    - name: "Catherine Blatter"
+    - name: "Michael Simon"
+    - name: "Thekla Brunkert"
+  date: today
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - simulation-step-by-step.qmd
+    - additional-statistical-info.qmd
+    - references.qmd
+  url: https://ins-basel.github.io/fidelity-tutorial
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+
+

@@ -1,0 +1,86 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Fidelity in Hybrid Implementation Trials: Technical Guidance for Implementation Researchers",
+    "section": "",
+    "text": "Preface\nThis online tutorial serves as a hands-on guide for researchers to replicate the simulation described in\n[our paper].\nThis supplementary material was designed with regard to support applied researchers (not statisticians) to adapt the simulation with required parameters for their own study. Consequently, the content is split in the following chapters:"
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "2  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Bates, Douglas, Martin Mächler, Ben Bolker, and Steve Walker. 2015.\n“Fitting Linear Mixed-Effects Models Using lme4.” Journal of Statistical\nSoftware 67 (1): 1–48. https://doi.org/10.18637/jss.v067.i01.\n\n\nR Core Team. 2022. R: A Language and Environment for Statistical\nComputing. Vienna, Austria: R Foundation for Statistical Computing.\nhttps://www.R-project.org/.\n\n\nTrutschel, Diana, and Catherine Blatter. 2022. fidelitysim: Simulations Experiments for Cluster\nRandomized Trials Having Fidelity Patterns for Implementation Science\nResearch.\n\n\nTrutschel, Diana, and Hendrik Treutler. 2017. samplingDataCRT: Sampling Data Within Different\nStudy Designs for Cluster Randomized Trials. https://CRAN.R-project.org/package=samplingDataCRT.\n\n\nWickham, Hadley. 2016. Ggplot2: Elegant Graphics for Data\nAnalysis. Springer-Verlag New York. https://ggplot2.tidyverse.org."
+  },
+  {
+    "objectID": "index.html#citation",
+    "href": "index.html#citation",
+    "title": "Fidelity in Hybrid Implementation Trials: Technical Guidance for Implementation Researchers",
+    "section": "Citation",
+    "text": "Citation\nIf you find this work helpful, please cite both the online tutorial and the paper by the reference of the original paper as in:\n[our paper]"
+  },
+  {
+    "objectID": "intro.html#required-r-packages",
+    "href": "intro.html#required-r-packages",
+    "title": "1  Introduction",
+    "section": "1.1 Required R packages",
+    "text": "1.1 Required R packages\nThe following R packages are needed to run the simulation:\n\n{fidelitysim} (Trutschel and Blatter 2022) - holds packaged code for the simulation experiment\n\nIt uses and builds upon:\n\n{samplingDataCRT} v1.0 (Trutschel and Treutler 2017) - for sampling data matrices\n{lme4} (Bates et al. 2015) - for linear model estimation\n{ggplot2} (Wickham 2016) - for visualizing the results\n\nYou can install the necessary packages by:\n\n# to install {fidelitysim} we need the {remotes}-package\ninstall.packages(\"remotes\")\n\n# then install {fidelitysim} from GitHub\nremotes::install_github(\"INS-Basel/fidelitysim\")\n\nThe other packages are installed from CRAN:\n\n# install packages from CRAN\ninstall.packages(c(\"samplingDataCRT\", \"lme4\", \"ggplot2\"))\n\nConsequently, to start the calculation the package needs to be loaded by:\n\nlibrary(fidelitysim)"
+  },
+  {
+    "objectID": "intro.html#other-considerations",
+    "href": "intro.html#other-considerations",
+    "title": "1  Introduction",
+    "section": "1.2 Other considerations",
+    "text": "1.2 Other considerations\nThe local simulation can - depending on the number of clusters - take up to 10-12 hours when the recommended number of iterations of 10,000 is used.\n\n\n\n\nBates, Douglas, Martin Mächler, Ben Bolker, and Steve Walker. 2015. “Fitting Linear Mixed-Effects Models Using lme4.” Journal of Statistical Software 67 (1): 1–48. https://doi.org/10.18637/jss.v067.i01.\n\n\nR Core Team. 2022. R: A Language and Environment for Statistical Computing. Vienna, Austria: R Foundation for Statistical Computing. https://www.R-project.org/.\n\n\nTrutschel, Diana, and Catherine Blatter. 2022. fidelitysim: Simulations Experiments for Cluster Randomized Trials Having Fidelity Patterns for Implementation Science Research.\n\n\nTrutschel, Diana, and Hendrik Treutler. 2017. samplingDataCRT: Sampling Data Within Different Study Designs for Cluster Randomized Trials. https://CRAN.R-project.org/package=samplingDataCRT.\n\n\nWickham, Hadley. 2016. Ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York. https://ggplot2.tidyverse.org."
+  },
+  {
+    "objectID": "workflow.html#workflow",
+    "href": "workflow.html#workflow",
+    "title": "2  Detailed statistical information",
+    "section": "2.1 Workflow",
+    "text": "2.1 Workflow\n\n\n\nWorkflow diagramme of the simulation\n\n\nEach simulation step includes three necessary steps:\n\nDetermining the design matrix regarding the specified design\nSampling data\nEffect estimation from the data\n\nand will be explained with more detail here. For a simulation experiment like in [Tutorial] it is not necessary to understand the whole statistical modeling background, which is figured out here.\nFor the first 2 steps the provided R-package {samplingDataCRT} v1.0 (Trutschel and Treutler 2017) is needed, for the last {lm4}. How to install and load see [Introduction]. The first steps is doe once and the latter two are used repeatedly through one simulation experiment within each scenario setting specified in step 1."
+  },
+  {
+    "objectID": "workflow.html#determining-the-design-matrix-regarding-the-chosen-design",
+    "href": "workflow.html#determining-the-design-matrix-regarding-the-chosen-design",
+    "title": "2  Detailed statistical information",
+    "section": "2.2 Determining the design matrix regarding the chosen design",
+    "text": "2.2 Determining the design matrix regarding the chosen design\nTo specify a cluster randomized study the following parameter has to be determined:\n\nNumber of clusters (e.g. hospitals, nursing homes, …) obtained through the study\nNumber of time points the clusters were followed\nCluster size referes to the number of individuals obtained within one cluster\nStudy design: parallel design or Stepped wedge design (cross-over also possible)\nStudy type: cross-sectional if individuals could be different within the cluster between time points or longitudinal if individuals are followed over time\n\nBased on the example in the main article, we specify a hypothetical example including parameter settings for a reference setup of the simulation experiment: a cross-sectional stepped wedge cluster randomized trial with ten nursing homes, six time points and ten individuals within each nursing home and time point (see main article). All parameters can be adapted to a own practical example. The resulting reference design matrix can be create manually (by create a corresponding matrix) or by the povided function R-function {designMatrix()}.\n\n######################################################\n#using the parameter setting of Table 1 in the article\n######################################################\n\n## Design ##\n############\nK<-7 #number of time points\nI<-6 #number of cluster\nSw<-1 #number of cluster switches per time point can be manually set\nJ<-10 #Subjects =  Number of individuals per cluster\n\n#design matrix of \"SWD\" with given setting\n(X<-samplingDataCRT::designMatrix(nC=I, nT=K, nSw=Sw))\n\n     [,1] [,2] [,3] [,4] [,5] [,6] [,7]\n[1,]    0    1    1    1    1    1    1\n[2,]    0    0    1    1    1    1    1\n[3,]    0    0    0    1    1    1    1\n[4,]    0    0    0    0    1    1    1\n[5,]    0    0    0    0    0    1    1\n[6,]    0    0    0    0    0    0    1"
+  },
+  {
+    "objectID": "workflow.html#sampling-data-of-a-cluster-randomized-trial-with-a-given-design",
+    "href": "workflow.html#sampling-data-of-a-cluster-randomized-trial-with-a-given-design",
+    "title": "2  Detailed statistical information",
+    "section": "2.3 Sampling data of a cluster randomized trial with a given design",
+    "text": "2.3 Sampling data of a cluster randomized trial with a given design\nTo sample data for a cluster randomized trial using sampling from a multivariate normal distribution provided by the package {samplingDataCRT}, several model parameter has also be specified:\n\nBaseline mean of the outcome of interest\nIntervention effect (change/difference in mean outcome) by implementing the intervention)\nTime trend effects\nVariance within the multilevel data: between clusters, between individuals, within individuals which provide an estimate of the intra-cluster correlation coefficient (ICC) as an measure of dependencies within clusters.\n\nIn the example here we set the mean outcoem to 10 (for example the mean value of measured quality of life in population), the intervention effect, no time trends. With a given between cluster variance of sigma.3 and a error variance of sigma.1, the resulting ICC is ICC.\n\n## Model parameter ##\n####################\nmu.0<- 10           # Baseline mean of the outcome of interest\ntheta <- 1          # intervention effect\nbetas<-rep(0, K-1)  # no Time trend, but could be included\n\nsigma.1<-2    # variability within or error variance (H&H sigma)\nsigma.2<-NULL\nsigma.3<-sigma.1*sqrt(0.001/(1-0.001))    # between clusters variability (H&H tau)\n\n#resulting ICC\n(ICC<-sigma.3^2/(sigma.3^2+sigma.1^2))\n\n[1] 0.001\n\n\nTo note, by choosing longitudinal or cross-sectional design, we need to speciy in the first case 3, in the second only two variances regarding using a three- instead of a two-level hierarchical experiment with the following meaning:\n\nthree-level design (longitudinal data):\n\nbetween clusters variability\nwithin cluster (or between individuals) variability\nwithin individuals (or error) variability\n\ntwo-level design (cross-sectional data):\n\nbetween clusters variability [‘sigma’ put this reference here Hussey and Hughes 2007 ]\nwithin cluster (or error) variability [ ‘tau’ put this reference here Hussey and Hughes 2007 ]\n\n\nA complete dataset for a special design with a given setup can be sampled by the given function R-function {sampleData()}. Therefore,the complete data design matrix and the covariance-variance matrix for the data given the design are also needed to be specified, which is provided by the functions R-function {completeDataDesignMatrix()} and R-function {CovMat.Design()}. The complete data design matrix has the size of (Number of Cluster x Clustersize x Number of timepoints) rows and (Number of model parameters) columns. To sample the data from for a cluster randomized trial, it has additionally be specified, if the individuals are followed over time (longitudinal design) or not (cross-sectional design).\n\n#complete data design matrix\nD<-samplingDataCRT::completeDataDesignMatrix(J, X)\n(dim(D))\n\n[1] 420   8\n\n#covariance-variance matrix for the data given the design\nV<-samplingDataCRT::CovMat.Design(K, J, I, sigma.1=sigma.1, sigma.3=sigma.3)\ndim(V)\n\n[1] 420 420\n\n#corresponding fixed effects in linear mixed model\nparameters<-c(mu.0, betas, theta)\n\n#sample complete data given the setup\n# study design type = cross-sectional\ntype<-\"cross-sec\" \nsample.data<-samplingDataCRT::sampleData(type = type, K=K,J=J,I=I, D=D, V=V, parameters=parameters)\n\nTo validate the number of observations provided by the sampling method a summary of the data can be conducted.\n\ndim(sample.data)\n\n[1] 420   5\n\n#show the number of observations within the SWD\nxtabs(~cluster+measurement, data=sample.data)\n\n       measurement\ncluster  1  2  3  4  5  6  7\n      1 10 10 10 10 10 10 10\n      2 10 10 10 10 10 10 10\n      3 10 10 10 10 10 10 10\n      4 10 10 10 10 10 10 10\n      5 10 10 10 10 10 10 10\n      6 10 10 10 10 10 10 10"
+  },
+  {
+    "objectID": "workflow.html#effect-estimation-from-the-data",
+    "href": "workflow.html#effect-estimation-from-the-data",
+    "title": "2  Detailed statistical information",
+    "section": "2.4 Effect estimation from the data",
+    "text": "2.4 Effect estimation from the data\nThe sampled data can then be analysed by a linear mixed model with the function R-function{lmer()} of the package R-package {lme4}, hence the parameter of the model will be estimated.\n\n#analysis of the two-level data by a linear mixe model\nlme4::lmer(val~intervention+measurement + (1|cluster), data=sample.data)\n\nLinear mixed model fit by REML ['lmerMod']\nFormula: val ~ intervention + measurement + (1 | cluster)\n   Data: sample.data\nREML criterion at convergence: 1532.353\nRandom effects:\n Groups   Name        Std.Dev.\n cluster  (Intercept) 0.1661  \n Residual             1.4880  \nNumber of obs: 420, groups:  cluster, 6\nFixed Effects:\n (Intercept)  intervention  measurement2  measurement3  measurement4  \n    9.998904      1.099036      0.009912      0.045110      0.280591  \nmeasurement5  measurement6  measurement7  \n   -0.168744     -0.191898     -0.323571  \n\n\nThis process of sampling data and effect estimation from the data will be used repeatedly through the simulation experiment within each scenario setting.\n\n\n\n\nTrutschel, Diana, and Hendrik Treutler. 2017. samplingDataCRT: Sampling Data Within Different Study Designs for Cluster Randomized Trials. https://CRAN.R-project.org/package=samplingDataCRT."
+  },
+  {
+    "objectID": "index.html#comparison-to-other-tools",
+    "href": "index.html#comparison-to-other-tools",
+    "title": "Fidelity in Hybrid Implementation Trials: Technical Guidance for Implementation Researchers",
+    "section": "Comparison to other tools",
+    "text": "Comparison to other tools"
+  }
+]

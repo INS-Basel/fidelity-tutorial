@@ -1,0 +1,34 @@
+# Preface {.unnumbered}
+
+This online tutorial serves as a hands-on guide for researchers 
+to replicate the simulation described in 
+
+[our paper].  
+
+This supplementary material was designed with regard to support applied 
+researchers (*not* statisticians) to adapt the simulation with required 
+parameters for their own study. 
+Consequently, the content is split in the following chapters:  
+
+- Chapter 1 gives an overview of the technical requirements
+
+- Chapter 2 describes step-by-step how to conduct the simulation for a specific research study,
+  based on parallel or stepped wedge CRTs, furthermore show the comparison of several fidelity patterns 
+
+ - Chapter 3 optionally provides additional statistical information, but does *not* need to be consulted 
+   to be able to run the simulation
+
+
+## Citation {.unnumbered}
+
+If you find this work helpful, please cite both the online tutorial 
+and the paper by the reference of the original paper as in: 
+
+[our paper]
+
+
+## Comparison to other tools
+
+
+
+

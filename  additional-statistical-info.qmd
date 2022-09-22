@@ -1,0 +1,140 @@
+# Detailed statistical information
+
+## Workflow
+
+![Workflow diagramme of the simulation](img/workflow.png){width=500}
+
+
+Each simulation step includes three necessary steps:
+
+- Determining the design matrix regarding the specified design  
+
+- Sampling data  
+
+- Effect estimation from the data 
+
+and will be explained with more detail here. For a simulation experiment like in 
+[Tutorial] it is not necessary to understand the whole statistical modeling 
+background, which is figured out here.
+
+For the first 2 steps the provided R-package {samplingDataCRT} v1.0 [@R-samplingDataCRT] is needed, for the last {lm4}. How to install and load see [Introduction]. The first steps is doe once and the latter two are used repeatedly through one simulation experiment within each scenario setting specified in step 1.
+
+
+## Determining the design matrix regarding the chosen design
+
+To specify a cluster randomized study the following parameter has to be determined:
+
+- Number of clusters (e.g. hospitals, nursing homes, ...) obtained through the study
+- Number of time points the clusters were followed
+- Cluster size referes to the number of individuals obtained within one cluster
+- Study design: parallel design or Stepped wedge design (cross-over also possible)
+- Study type: cross-sectional if individuals could be different within the cluster between time points or longitudinal if individuals are followed over time 
+
+
+Based on the example in the main article, we specify a hypothetical example including parameter settings for a reference setup of the simulation experiment: a cross-sectional stepped wedge cluster randomized trial with ten nursing homes, six time points and ten individuals within each nursing home and time point (see main article). All parameters can be adapted to a own practical example. The resulting reference design matrix can be create manually (by create a corresponding matrix) or by the povided function R-function {designMatrix()}.
+
+
+```{r}
+######################################################
+#using the parameter setting of Table 1 in the article
+######################################################
+
+## Design ##
+############
+K<-7 #number of time points
+I<-6 #number of cluster
+Sw<-1 #number of cluster switches per time point can be manually set
+J<-10 #Subjects =  Number of individuals per cluster
+
+#design matrix of "SWD" with given setting
+(X<-samplingDataCRT::designMatrix(nC=I, nT=K, nSw=Sw))
+
+```
+
+## Sampling data of a cluster randomized trial with a given design
+
+To sample data for a cluster randomized trial using sampling from a multivariate normal distribution provided by the package {samplingDataCRT}, several model parameter has also be specified:
+
+- Baseline mean of the outcome of interest
+- Intervention effect (change/difference in mean outcome) by implementing the intervention)
+- Time trend effects
+- Variance within the multilevel data: between clusters, between individuals, within individuals which provide an estimate of the intra-cluster correlation coefficient (ICC) as an measure of dependencies within clusters.
+
+In the example here we set the mean outcoem to 10 (for example the mean value of measured quality of life in population), the intervention effect, no time trends. With a given between cluster variance of `sigma.3` and a error variance of `sigma.1`, the resulting ICC is `ICC`. 
+
+
+```{r}
+
+## Model parameter ##
+####################
+mu.0<- 10           # Baseline mean of the outcome of interest
+theta <- 1          # intervention effect
+betas<-rep(0, K-1)  # no Time trend, but could be included
+
+sigma.1<-2    # variability within or error variance (H&H sigma)
+sigma.2<-NULL
+sigma.3<-sigma.1*sqrt(0.001/(1-0.001))    # between clusters variability (H&H tau)
+
+#resulting ICC
+(ICC<-sigma.3^2/(sigma.3^2+sigma.1^2))
+
+```
+
+
+To note, by choosing longitudinal or cross-sectional design, we need to speciy in the first case 3, in the second only two variances regarding using a three- instead of a two-level hierarchical experiment with the following meaning:
+
+- three-level design (longitudinal data):
+  - between clusters variability
+  - within cluster (or between individuals) variability
+  - within individuals (or error) variability
+- two-level design (cross-sectional data):
+  - between clusters variability ['sigma' put this reference here Hussey and Hughes 2007 ]
+  - within cluster (or error) variability [ 'tau' put this reference here Hussey and Hughes 2007 ]
+
+A complete dataset for a special design with a given setup can be sampled by the given function R-function {sampleData()}. Therefore,the complete data design matrix and the covariance-variance matrix for the data given the design are also needed to be specified, which is provided by the functions R-function {completeDataDesignMatrix()} and R-function {CovMat.Design()}. The complete data design matrix has the size of (Number of Cluster x Clustersize x Number of timepoints) rows and (Number of model parameters) columns. To sample the data from for a cluster randomized trial, it has additionally be specified, if the individuals are followed over time (longitudinal design) or not (cross-sectional design).
+
+
+```{r}
+
+#complete data design matrix
+D<-samplingDataCRT::completeDataDesignMatrix(J, X)
+(dim(D))
+#covariance-variance matrix for the data given the design
+V<-samplingDataCRT::CovMat.Design(K, J, I, sigma.1=sigma.1, sigma.3=sigma.3)
+dim(V)
+#corresponding fixed effects in linear mixed model
+parameters<-c(mu.0, betas, theta)
+
+#sample complete data given the setup
+# study design type = cross-sectional
+type<-"cross-sec" 
+sample.data<-samplingDataCRT::sampleData(type = type, K=K,J=J,I=I, D=D, V=V, parameters=parameters)
+
+```
+
+To validate the number of observations provided by the sampling method a summary of the data can be conducted.
+
+```{r}
+
+dim(sample.data)
+#show the number of observations within the SWD
+xtabs(~cluster+measurement, data=sample.data)
+
+```
+
+
+## Effect estimation from the data
+
+The sampled data can then be analysed by a linear mixed model with the function 
+R-function{lmer()} of the package R-package {lme4}, hence the parameter of the model will be estimated. 
+
+
+```{r}
+
+#analysis of the two-level data by a linear mixe model
+lme4::lmer(val~intervention+measurement + (1|cluster), data=sample.data)
+
+```
+
+This process of sampling data and effect estimation from the data will be used repeatedly through the simulation experiment within each scenario setting.
+
