@@ -510,8 +510,8 @@ ggplot(res.plot,
 ggsave(filename="img/results.Simulation.1000.png")
 ```
 
-The figure @fig-Sim summarize the results of the several simulations for different fidelity patterns regarding power of the study.
+The figure @fig-sim summarize the results of the several simulations for different fidelity patterns regarding power of the study.
 
-![Results](img/results.Simulation.1000.png){fig-Sim, width=6000}
+![Results](img/results.Simulation.1000.png){#fig-sim}
 
 
