@@ -200,7 +200,7 @@ for the simulation. Its a number how often the sampling and estimation should be
 ```{r anzItglobal}
 
 ## Number of repeats within the simulation ##
-anzSim <- 10
+anzSim <- 100
 
 ```
 
@@ -234,7 +234,7 @@ res.Simu.parallel.lin <- simulation(
 ```
 
 
-```{r, echo = FALSE}
+```{r}
 end_time <- Sys.time()
 time.sim <- round(as.numeric((end_time - start_time), units = "mins"),2)
 ```
@@ -294,7 +294,7 @@ At first, perfect situation simulation (no deviation fro 100% implementation).
 
 
 
-```{r, warning=F, message=F, eval=TRUE}
+```{r, warning=F, message=F, eval=FALSE}
 ################################
 # perfect implementation
 # no individual or cluster miss
@@ -309,15 +309,17 @@ res<-fidelitysim::simulation(
                    mu.0=mu.0, theta=theta,betas=betas,
                    X=X, X.A=X #design matrices
                   )
-
-#save results
-res.Sim.diffFid<-as.data.frame(t(
-                      c(res, 
-                      D="perfect",
-                      slope=0, sort=1, Fid.Begin=1, Fid.END=1)
-                      ))
+res<-as.data.frame(t(res))
 
 ```
+
+```{r, echo=FALSE, eval=FALSE}
+#save results
+res.Sim.diffFid<-data.frame()
+res.Sim.diffFid<-data.frame(res, 
+                            D="perfect", slope=0, sort=1, Fid.Begin=1, Fid.END=1)
+```
+
 
 ```{r, echo=FALSE, eval=FALSE}
 #save results in file
@@ -325,11 +327,11 @@ res.Sim.diffFid<-as.data.frame(t(
 # utils::write.table(res.Sim.diffFid, file=file.tmp)
 ```
 
-Next for a slow increase (reflected by an exponential function):
+Next for several slow increase (reflected by an exponential function):
 
-```{r, warning=F, message=F, eval=TRUE}
+```{r, warning=F, message=F, eval=FALSE}
 ###all the other patterns
-res.Simu<-NULL
+res.Simu<-data.frame()
 
 #exponential increase
 for(sl in 1:nr.sl){#for each slope
@@ -348,21 +350,28 @@ for(sl in 1:nr.sl){#for each slope
                     mu.0=mu.0, theta=theta,betas=betas,
                     X=X, X.A=A1.exp
                     )
+    res<-as.data.frame(t(res))
     #save results
     res.Simu<-rbind(res.Simu,
-                    as.data.frame(t(c(
-                      res, 
-                      D="exp", slope=slope.seq[sl], sort=2+nr.sl+(nr.sl-sl+1),
-                     Fid.Begin=Fid.T1, Fid.END=Fid.End)))
+                   data.frame( res, 
+                      D="exp", slope=slope.seq[sl], sort=2+nr.sl+(nr.sl-sl+1), Fid.Begin=Fid.T1, Fid.END=Fid.End)
     )
 
 }
 
 ```
 
-For a fast increase (reflected by a logarithmic function):
 
-```{r, warning=F, message=F, eval=TRUE}
+```{r, echo=FALSE, eval=FALSE}
+res.Simu.2<-res.Simu
+```
+
+For several fast increase (reflected by a logarithmic function):
+
+```{r, warning=F, message=F, eval=FALSE}
+###all the other patterns
+res.Simu<-data.frame()
+
 #logistic increase
 for(sl in 1:nr.sl){#for each slope
     #Fidelity pattern
@@ -378,20 +387,24 @@ for(sl in 1:nr.sl){#for each slope
                     sigma.1=sigma.1,sigma.3=sigma.3,
                     mu.0=mu.0, theta=theta,betas=betas,
                     X=X, X.A=A1.log)
+    res<-as.data.frame(t(res))
     #save results
     res.Simu<-rbind(res.Simu,
-                    as.data.frame(t(c(
-                      res, 
-                      D="log", slope=slope.seq[sl], sort=1+sl
-                      , Fid.Begin=Fid.T1, Fid.END=Fid.End)))
+                   data.frame( res, 
+                      D="log", slope=slope.seq[sl], sort=1+sl, Fid.Begin=Fid.T1, Fid.END=Fid.End)
     )
   }
 
 ```
 
+
+```{r, echo=FALSE, eval=FALSE}
+res.Simu.2<-rbind(res.Simu.2,res.Simu)
+```
+
 For linear increase:
 
-```{r, warning=F, message=F, eval=TRUE}
+```{r, warning=F, message=F, eval=FALSE}
 
 ##linear increase
 m<-(Fid.T1-Fid.End)/(1-(K-1))
@@ -406,17 +419,22 @@ res<-fidelitysim::simulation(anzSim=anzSim,
                 sigma.1=sigma.1,sigma.3=sigma.3,
                 mu.0=mu.0, theta=theta,betas=betas,
                 X=X, X.A=A1.lin)
-#save results
-res.Simu<-rbind(res.Simu,
-                  as.data.frame(t(c(
-                    res, 
-                    D="linear", slope=0, sort=2+nr.sl
-                    , Fid.Begin=Fid.T1, Fid.END=Fid.End)))
-)
+res<-as.data.frame(t(res))
 
 ```
 
-```{r, echo=FALSE, eval=TRUE}
+```{r, echo=FALSE, eval=FALSE}
+#save results
+res.Simu.2<-rbind(res.Simu.2,
+                   data.frame( res, 
+                    D="linear", slope=0, sort=2+nr.sl , Fid.Begin=Fid.T1, Fid.END=Fid.End)
+)
+
+#res.Simu<-as.data.frame(res.Simu)
+```
+
+
+```{r, echo=FALSE}
 
 # file.tmp<-paste("./results/parallel_results_", Fid.T1, "_", Fid.End, ".csv", sep="")
 # write.table(res.Simu, file=file.tmp)
@@ -426,11 +444,11 @@ time.3<-round(as.numeric((end_time - start_time), units = "mins"),2)
 
 ```
 
-Needs `time.3` minutes time.
+Needs 28 minutes time for simulation each scenario 1000 times.
 
-```{r, echo=FALSE, eval=TRUE}
+```{r, echo=FALSE, eval=FALSE}
 
-res.plot<-rbind(res.Simu,res.Sim.diffFid)
+res.plot<-rbind(res.Simu.2,res.Sim.diffFid)
 
 res.plot<-subset(res.plot, 
                  select=c("Power.Intervention" ,
@@ -438,9 +456,9 @@ res.plot<-subset(res.plot,
                           , "Fid.END", "Fid.Begin"
                           ))
 #function to convert
-as.numeric.factor <- function(x) {as.numeric(levels(x))[x]}
-res.plot$Power.Intervention<-as.numeric.factor(res.plot$Power.Intervention)
-res.plot$sort<-as.numeric.factor(res.plot$sort)
+#as.numeric.factor <- function(x) {as.numeric(levels(x))[x]}
+#res.plot$Power.Intervention<-as.numeric.factor(res.plot$Power.Intervention)
+#res.plot$sort<-as.numeric.factor(res.plot$sort)
 #str(res.plot)
 #res.plot$slope<-as.factor(res.plot$slope)
 #res.plot$sort<-as.factor(res.plot$sort)
@@ -459,10 +477,10 @@ res.plot<-res.plot[with(res.plot, order(sort)), ]
 # res.plot.decr
 ```
 
-The figure summarize the results of the several simulations for different fidelity patterns regarding power of the study.
+<!-- The figure @fig-Simu summarize the results of the several simulations for different fidelity patterns regarding power of the study. -->
 
 
-```{r, fig.width=8, fig.height=8, eval=TRUE, echo=FALSE}
+```{r fig-Simu, fig.width=8, fig.height=8, eval=TRUE, echo=FALSE, message=FALSE, eval=FALSE}
 library(ggplot2)
 ggplot(res.plot,
                 aes(x=sort, y=Power.Intervention, pch=D))+
@@ -478,8 +496,8 @@ ggplot(res.plot,
         axis.title=element_text(size=14),
         axis.ticks.x = element_blank()
         )+
-  scale_x_continuous(labels=c("perfect", "fast", "linear", "slow"),
-                     breaks=c(1,nr.sl/2+1,nr.sl+2,nr.sl+2+nr.sl/2))+
+  # scale_x_continuous(labels=c("perfect", "fast", "linear", "slow"),
+  #                    breaks=c(1,nr.sl/2+1,nr.sl+2,nr.sl+2+nr.sl/2))+
   labs(#title="SWD Design",
        #shape="Fidelity speed",
        #col="Fidelity change \n (Start:End)", fill="Fidelity Start",
@@ -488,8 +506,12 @@ ggplot(res.plot,
 #   #guides(fill=TRUE)+
 #   #guides(fill = guide_legend(override.aes = list(shape = NA)))+
   ylim(0.25,1)
+
+ggsave(filename="img/results.Simulation.1000.png")
 ```
 
+The figure @fig-Sim summarize the results of the several simulations for different fidelity patterns regarding power of the study.
 
+![Results](img/results.Simulation.1000.png){fig-Sim, width=6000}
 
 
