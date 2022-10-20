@@ -216,7 +216,7 @@ Sw <- 1 # number of cluster switches per time point can be manually set
 ## Determine different fidelity patterns
 
 Fidelity refers to the degree to which an intervention was implemented as it was prescribed or intended. 
-We aim to include different patterns of how fidelity might increase over time to estimate the respective effects on power of the study. To describe hypothetical fidelity patterns of increasing fidelity (slow, linear, fast) different mathematical functions (i.e. logistic, linear and exponential curves) are implemented. By considering different values for the slope parameter we can cover a range of fidelity patterns. The slope parameter ranges form $(0,\infty)$, where a slope parameter near to $0$ indicates a increase far away from a linear (fast increase upper left corner, slow increase right bottom corner curve) and a great slope parameter near to linear (See figure \@ref(fig:fig-pattern) ). 
+We aim to include different patterns of how fidelity might increase over time to estimate the respective effects on power of the study. To describe hypothetical fidelity patterns of increasing fidelity (slow, linear, fast) different mathematical functions (i.e. logistic, linear and exponential curves) are implemented. By considering different values for the slope parameter we can cover a range of fidelity patterns. The slope parameter ranges form $(0,\infty)$, where a slope parameter near to $0$ indicates a increase far away from a linear (fast increase upper left corner, slow increase right bottom corner curve) and a great slope parameter near to linear (See figure @fig-pattern ). 
 
 
 ```{r patterns, eval=TRUE}
