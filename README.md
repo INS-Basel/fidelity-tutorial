@@ -29,6 +29,11 @@ Tutorial and additional information to \[name of paper\]
     `_quarto.yml` -file. Addition or deletion of chapters are signaled
     there.
 
-6)  Call `quarto render` to get a preview of the book.
+6)  Call `quarto render` in a Terminal to render and `quarto preview`to
+    get a preview of the book.
 
 7)  Save, commit, and push to remote!
+
+8)  If you have installed additional packages, call `renv::snapshot()`
+    to add these to the lockfile, so that others can do 4) on their
+    machines and have the same packages and versions as you do. Thanks!
