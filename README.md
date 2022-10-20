@@ -29,6 +29,6 @@ Tutorial and additional information to \[name of paper\]
     `_quarto.yml` -file. Addition or deletion of chapters are signaled
     there.
 
-6)  Call `quarto render` to get a preview of the book.
+6)  Call `quarto render` in the terminal to get a preview of the book.
 
 7)  Save, commit, and push to remote!
