@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.131">
+<meta name="generator" content="quarto-1.2.225">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -61,6 +124,7 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -110,7 +174,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./additional-statistical-info.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">additional-statistical-info.html</span></a>
+  <a href="./additional-statistical-info.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Detailed statistical information</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -123,7 +187,21 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#simulation-experiment-for-one-setting" id="toc-simulation-experiment-for-one-setting" class="nav-link active" data-scroll-target="#simulation-experiment-for-one-setting"><span class="toc-section-number">2.1</span>  Simulation experiment for one setting</a>
+  <ul class="collapse">
+  <li><a href="#study-design" id="toc-study-design" class="nav-link" data-scroll-target="#study-design"><span class="toc-section-number">2.1.1</span>  Study design</a></li>
+  <li><a href="#indication-if-there-are-deviations-from-perfect-situations-or-not" id="toc-indication-if-there-are-deviations-from-perfect-situations-or-not" class="nav-link" data-scroll-target="#indication-if-there-are-deviations-from-perfect-situations-or-not"><span class="toc-section-number">2.1.2</span>  Indication if there are deviations from perfect situations or not</a></li>
+  <li><a href="#model-parameter" id="toc-model-parameter" class="nav-link" data-scroll-target="#model-parameter"><span class="toc-section-number">2.1.3</span>  Model parameter</a></li>
+  <li><a href="#iterations-of-the-simulation" id="toc-iterations-of-the-simulation" class="nav-link" data-scroll-target="#iterations-of-the-simulation"><span class="toc-section-number">2.1.4</span>  Iterations of the simulation</a></li>
+  <li><a href="#simulation-experiment" id="toc-simulation-experiment" class="nav-link" data-scroll-target="#simulation-experiment"><span class="toc-section-number">2.1.5</span>  Simulation experiment</a></li>
+  </ul></li>
+  <li><a href="#comparison-of-several-fidelity-patterns-for-a-parallel-design" id="toc-comparison-of-several-fidelity-patterns-for-a-parallel-design" class="nav-link" data-scroll-target="#comparison-of-several-fidelity-patterns-for-a-parallel-design"><span class="toc-section-number">2.2</span>  Comparison of several Fidelity patterns for a parallel design</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -138,14 +216,392 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
 
 </header>
 
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/workflow.png" class="img-fluid figure-img" width="500"></p>
+<p></p><figcaption class="figure-caption">Workflow diagramme of the simulation</figcaption><p></p>
+</figure>
+</div>
+<p>In the following the tutorial is separated in two parts, showing the use for:</p>
+<ol type="1">
+<li>Simulation experiment for one setting by choosing between
+<ul>
+<li>Parallel or Stepped wedge designs<br>
+</li>
+<li>Perfect versus Implementation error situations</li>
+</ul></li>
+<li>Simulation experiments to comparison of several Fidelity patterns</li>
+</ol>
+<section id="simulation-experiment-for-one-setting" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="simulation-experiment-for-one-setting"><span class="header-section-number">2.1</span> Simulation experiment for one setting</h2>
+<p>According the [Workflow diagramme of the simulation] corresponds to inner box, here we show how to evaluate the performance of a cluster randomized trial with one specific setting of study design and probably existing specific implementation error (fidelity pattern).</p>
+<p>Within each simulation experiment steps of data sampling and effect estimation, provided by function within the R-package {samplingDataCRT}, were repeated. For explanation see [Detailed statistical information]. After repeating the steps of the simulation the obtained effect estimates can be evaluated for the performance of the model. The provided function <code>performanceMeas()</code> of the R-package {fidelitysim} calculates the following performance measures of a simulation:</p>
+<ul>
+<li><p>Bias: mean deviation of the estimates from the true value of the parameter of interest (intervention effect) is an indicator of accuracy</p></li>
+<li><p>Coverage: measurement used to control the Type I error rate for testing the null hypothesis (H0) of no effect</p></li>
+<li><p>Power: proportion of simulation samples in which the H0 of no effect is rejected at a significance level of <span class="math inline">\(\alpha\)</span> when H0 is false (is related to the empirical Type II error rate).</p></li>
+</ul>
+<p>To simplify the process of the whole simulation experiment the R-function <code>simulation()</code> is provided within the R-package {fidelitysim}. The function includes the steps: data sampling for a specific design and existing implementation error, effect estimation, performance measures calculation. Hence, the input of the function is the specification parameter:</p>
+<ul>
+<li>number of repeats for the simulation</li>
+<li>chosen design (including study design, number of cluster, time points and individuals per cluster)</li>
+<li>model parameters (effect, variances, …)</li>
+<li>two design matrices which indicates whether deviation from perfect situations are assumed or not</li>
+</ul>
+<p>and the output are:</p>
+<ul>
+<li>effect estimates</li>
+<li>performance measures</li>
+</ul>
+<p>The usage is shown here for a parallel design trail, where the difference of the method application regarding the parameter setting for other design is explained. Be sure necessary packages are loaded:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load necessary packages</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fidelitysim)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(samplingDataCRT)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#library(ggplot2)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>One setting includes the specification of :</p>
+<ol type="1">
+<li>Study design</li>
+<li>Indication if there are deviations from perfect situations or not</li>
+<li>Model parameter</li>
+<li>Iterations of the simulation</li>
+</ol>
+<p>and finally,</p>
+<ol start="5" type="1">
+<li>the Simulation experiment can be performed.</li>
+</ol>
+<section id="study-design" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="study-design"><span class="header-section-number">2.1.1</span> Study design</h3>
+<p>Based on the study setup, the following parameters for the study design need to be defined:</p>
+<ul>
+<li>No.&nbsp;of clusters (e.g hospitals)</li>
+<li>No.&nbsp;of individuals per cluster (and time point) as the cluster size</li>
+<li>No.&nbsp;of time points the cluster were followed</li>
+<li>Design type controls if individuals will be fowllowed over time (cross-sectional or longitudinal): cross-sectional type, which indicates trials where individuals within the cluster can change over time points</li>
+</ul>
+<p>A design matrix according the study design has to be determined by the function <code>designMatrix()</code>. Here, two arguments are specific for the different types of studies. If the <code>design</code> argument is set ‘parallel’, then the parameter <code>nSW</code> indicates here the number of clusters are being control group. If choosing <code>design = "SWD"</code> (which is also set by default), the he parameter <code>nSW</code> indicates here the number of cluster switches per time point from control to intervention group.</p>
+<p>Then we determine the corresponding design matrix for a parallel cluster randomized study with:</p>
+<ul>
+<li>6 cluster with a</li>
+<li>cluster size of 10 measured at</li>
+<li>7 time points, where</li>
+<li>3 clusters in each, the control as well as in the intervention group, are included</li>
+</ul>
+<p>as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Design matrix ##</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>I <span class="ot">&lt;-</span> <span class="dv">6</span> <span class="co"># number of clusters</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>J <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># number of individuals per cluster (used later in simulation-step)</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="dv">7</span> <span class="co"># number of time points</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>Sw <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># number of cluster switches per time point can be manually set</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># design matrix for parallel design</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>(designMat_prll <span class="ot">&lt;-</span> <span class="fu">designMatrix</span>(<span class="at">nC =</span> I, <span class="at">nT =</span> K, <span class="at">nSw =</span> <span class="fu">round</span>(I <span class="sc">/</span> <span class="dv">2</span>), <span class="at">design =</span> <span class="st">"parallel"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3] [,4] [,5] [,6] [,7]
+[1,]    0    0    0    0    0    0    0
+[2,]    0    0    0    0    0    0    0
+[3,]    0    0    0    0    0    0    0
+[4,]    1    1    1    1    1    1    1
+[5,]    1    1    1    1    1    1    1
+[6,]    1    1    1    1    1    1    1</code></pre>
+</div>
+</div>
+</section>
+<section id="indication-if-there-are-deviations-from-perfect-situations-or-not" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="indication-if-there-are-deviations-from-perfect-situations-or-not"><span class="header-section-number">2.1.2</span> Indication if there are deviations from perfect situations or not</h3>
+<p>Further, in the function for the simulation by specifying a second design matrix <code>X.A</code>, we can indicate if there are deviations from the perfect situation present or not. Since we simulation perfect situation with no deviation, both arguments for the design matrices <code>X</code> and <code>X.A</code> are the same within the latter used R-function <code>simulation()</code> (see <a href="#simulation-experiment">Simulation experiment</a>). If deviations from perfect situation should be simulated, a second design matrix to which indicates the pattern of fidelity according to this study design has to be provided as well.</p>
+<p>To consider the deviation from perfect implementation of an intervention (100% fidelity) we add fractional values to estimate the degree of the deviation and its effect on the study effects. Therefor 3 functions in within the R-package {fidelitysim} can be used to specify several fidelity patterns. For explanation of all kind of fidelity patters see [Determine different fidelity patterns]. The conducted fidelity patterns can then be pushed to the design matrix with the R-package {samplingDataCRT}, see for more explanation [Fidelity patterns].</p>
+<p>Using the same parallel design trial example and assume a linear increase of fidelity from 40% to 80% from time point 1 to the end of trial (time point <code>K</code>) 3 arguments are specified:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Fidelity parameters </span><span class="al">###</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Fidelity at the begin</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>Fid.T1 <span class="ot">&lt;-</span> <span class="fl">0.4</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Fidelity at the end</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>Fid.End <span class="ot">&lt;-</span> <span class="fl">0.8</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># slope for linear function</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> (Fid.T1 <span class="sc">-</span> Fid.End) <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">-</span> (K <span class="sc">-</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># model linear increase</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>res.lin <span class="ot">&lt;-</span> <span class="fu">find.Fidelity.linear</span>(<span class="at">time.points =</span> K, Fid.End, Fid.T1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Which is then supplied to create a design matrix that reflects the deviation from perfect implementation by fractional values for each time point and cluster (find the other two functions for slow and fast increase here [Determine different fidelity patterns]):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># design matrix of a linear fidelity pattern</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>(fidelMat_prll <span class="ot">&lt;-</span> <span class="fu">implemMatrix.parallel</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nC =</span> I, <span class="at">nT =</span> K, <span class="at">nSw =</span> <span class="fu">round</span>(I <span class="sc">/</span> <span class="dv">2</span>),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">pattern =</span> res.lin[, <span class="st">"Fidelity.Prozent"</span>] <span class="sc">/</span> <span class="dv">100</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3] [,4] [,5] [,6] [,7]
+[1,]  0.0 0.00 0.00  0.0 0.00 0.00  0.0
+[2,]  0.0 0.00 0.00  0.0 0.00 0.00  0.0
+[3,]  0.0 0.00 0.00  0.0 0.00 0.00  0.0
+[4,]  0.4 0.47 0.53  0.6 0.67 0.73  0.8
+[5,]  0.4 0.47 0.53  0.6 0.67 0.73  0.8
+[6,]  0.4 0.47 0.53  0.6 0.67 0.73  0.8</code></pre>
+</div>
+</div>
+<p>This matrix reflecting implementation error is then used in the simulation as a reference matrix (note the difference in arguments <code>X = designMat_prll</code> and <code>X.A = fidelMat_prll</code> within the latter used R-function <code>simulation()</code> in section <a href="#simulation-experiment">Simulation experiment</a>, which did not differ in the <em>perfect</em> simulation).</p>
+</section>
+<section id="model-parameter" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="model-parameter"><span class="header-section-number">2.1.3</span> Model parameter</h3>
+<p>Data for a cluster randomized trial is sampled from a model provided by the package {samplingDataCRT}. Therefore, and in addition to the design parameters, we have to define the following model parameters as well:</p>
+<ul>
+<li>baseline mean of the outcome of interest (e.g.&nbsp;mean quality of life score) of 10</li>
+<li>intervention effect (the change of scores after intervention) of 1</li>
+<li>kind of time trend (effect of each time point during followed time points)</li>
+<li>a between clusters and error variance regrding the outcome of interest that results in an inter-cluster correlation coefficient (ICC)</li>
+</ul>
+<p>Define an hypothetical trial with:</p>
+<ul>
+<li>baseline mean of the outcome of interest of 10</li>
+<li>intervention effect of 1</li>
+<li>no time trend</li>
+<li>a between clusters and error variance that results in an ICC of 0.001</li>
+</ul>
+<p>as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Model parameter ##</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>mu<span class="fl">.0</span> <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># Baseline mean of the outcome of interest</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># Intervention effect</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>betas <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, K <span class="sc">-</span> <span class="dv">1</span>) <span class="co"># no time trend, but could be included</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># variability within or error variance (H&amp;H sigma)</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>sigma<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="dv">2</span> </span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># variability within clusters, if longitudina data</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>sigma<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="cn">NULL</span> </span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># between clusters variability (H&amp;H tau)</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>sigma<span class="fl">.3</span> <span class="ot">&lt;-</span> sigma<span class="fl">.1</span> <span class="sc">*</span> <span class="fu">sqrt</span>(<span class="fl">0.001</span> <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.001</span>)) </span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co"># resulting ICC</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>(ICC <span class="ot">&lt;-</span> sigma<span class="fl">.3</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> (sigma<span class="fl">.3</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> sigma<span class="fl">.1</span><span class="sc">^</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.001</code></pre>
+</div>
+</div>
+<p>Choosing a <code>longitudinal</code> instead of a <code>cross-sectional</code> design for the study demand the specification of a third variance (see for more detail into [Sampling data of a cluster randomized trial with a given design]).</p>
+<div class="rmdwarning">
+<p>DIANA - can we say to recommend these parameters as default values? what does mu.0 mean? How do I (non-statistician) know which values to choose? From a practical point of view I would expect to have a comment on this.</p>
+</div>
+</section>
+<section id="iterations-of-the-simulation" class="level3" data-number="2.1.4">
+<h3 data-number="2.1.4" class="anchored" data-anchor-id="iterations-of-the-simulation"><span class="header-section-number">2.1.4</span> Iterations of the simulation</h3>
+<p>In addition to the parameters set above, we need to define the number of iterations for the simulation. Its a number how often the sampling and estimation should be repeated to finally calculate the performance measures. The literature recommends between 10,000 and 100,000 repeats for valid results, but this comes at a time cost. To simplify this, we use n = 1,000 here.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Number of repeats within the simulation ##</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>anzSim <span class="ot">&lt;-</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="simulation-experiment" class="level3" data-number="2.1.5">
+<h3 data-number="2.1.5" class="anchored" data-anchor-id="simulation-experiment"><span class="header-section-number">2.1.5</span> Simulation experiment</h3>
+<p>Since we set all necessary arguments for the usage of the provided simulation function:</p>
+<ol type="1">
+<li>Study design</li>
+<li>Model parameter</li>
+<li>Indication if there are deviations from perfect situations or not</li>
+<li>Iterations of the simulation</li>
+</ol>
+<p>we can start the simulation by using the provided function <code>simulation</code> in package {fidelitysim} as follows:</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># linear increase of fidelity</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>res.Simu.parallel.lin <span class="ot">&lt;-</span> <span class="fu">simulation</span>(</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">anzSim =</span> anzSim, <span class="co">#Simulation parameter</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"cross-sec"</span>, <span class="at">K =</span> K, <span class="at">J =</span> J, <span class="at">I =</span> I, <span class="co">#design paramter</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sigma.1 =</span> sigma<span class="fl">.1</span>, <span class="at">sigma.3 =</span> sigma<span class="fl">.3</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">mu.0 =</span> mu<span class="fl">.0</span>, <span class="at">theta =</span> theta, <span class="at">betas =</span> betas, <span class="co">#model parameters</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">X =</span> designMat_prll, <span class="at">X.A =</span> fidelMat_prll <span class="co">#design matrices</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+
+</div>
+<p>Repeating the simulation 10 times for this design a computational time of 0.03 min is needed.</p>
+<p>The output of the simulation provides a total of n =22 results, among the following performance parameters (see also Introduction of this Chapter):</p>
+<ul>
+<li>Bias</li>
+<li>Coverage</li>
+<li>Power</li>
+</ul>
+<p>Hence, the mean estimate of the intervention effect from all iterations and the power of the design can be accessed like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mean estimated intervention effect</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>res.Simu.parallel.lin[<span class="st">"intervention Mean ."</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>intervention Mean . 
+          0.5086587 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># estimated power</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>(res.Simu.parallel.lin[<span class="st">"Power.Intervention"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Power.Intervention 
+               0.4 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Power.Intervention 
+               0.4 </code></pre>
+</div>
+</div>
+<p>We obtain a power of 0.4 to detect an intervention effect of 1 within an parallel study with 6 clusters followed 7 time points and a cluster size of 10 when an linear increase of the fidelity from 0.4 % to 0.8 is achieved after implementation of the intervention until end of the study.</p>
+</section>
+</section>
+<section id="comparison-of-several-fidelity-patterns-for-a-parallel-design" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="comparison-of-several-fidelity-patterns-for-a-parallel-design"><span class="header-section-number">2.2</span> Comparison of several Fidelity patterns for a parallel design</h2>
+<p>See again also for fidelity patterns conduction in [Fidelity patterns]. To compare the effect of different degrees of increasing fidelity after implementation against perfect trials, a repetition the simulation experiment for different degrees of fidelity increase but same settings has to be conducted.<br>
+We take again the example from above: cross-sectional parallel trial with ten clusters (5 of them getting the intervention, 5 of them not), 7 time points and ten individuals within each cluster and time point. We also assume a fidelity of 0.4 at the beginning and 0.8 at the end of trial for the intervention group. Here , we investigate on total 7 different fidelity pattern increases, 3 fast increases, 1 linear and 3 slow increases for this design setting.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="do">### several Slopes indicating the degree of increase </span><span class="al">###</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>slope.seq<span class="ot">&lt;-</span><span class="fu">round</span>(<span class="fu">exp</span>(<span class="dv">1</span>)<span class="sc">^</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>)),<span class="dv">2</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>nr.sl<span class="ot">&lt;-</span><span class="fu">length</span>(slope.seq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>start_time <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>At first, perfect situation simulation (no deviation fro 100% implementation).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="do">################################</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># perfect implementation</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># no individual or cluster miss</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="do">################################</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co">#design matrix of perfect situation</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>X<span class="ot">&lt;-</span>samplingDataCRT<span class="sc">::</span><span class="fu">designMatrix</span>(<span class="at">nC=</span>I, <span class="at">nT=</span>K, <span class="at">nSw=</span><span class="fu">round</span>(I<span class="sc">/</span><span class="dv">2</span>), <span class="at">design=</span><span class="st">"parallel"</span>)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>res<span class="ot">&lt;-</span>fidelitysim<span class="sc">::</span><span class="fu">simulation</span>(</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>                  <span class="at">anzSim=</span>anzSim, <span class="co">#Simulation parameter</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>                  <span class="at">type=</span><span class="st">"cross-sec"</span>, <span class="at">K=</span>K,<span class="at">J=</span>J,<span class="at">I=</span>I, <span class="co">#design paramter</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sigma.1=</span>sigma<span class="fl">.1</span>,<span class="at">sigma.3=</span>sigma<span class="fl">.3</span>, <span class="co">#model parameters</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>                   <span class="at">mu.0=</span>mu<span class="fl">.0</span>, <span class="at">theta=</span>theta,<span class="at">betas=</span>betas,</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>                   <span class="at">X=</span>X, <span class="at">X.A=</span>X <span class="co">#design matrices</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>                  )</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="co">#save results</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>res.Sim.diffFid<span class="ot">&lt;-</span><span class="fu">as.data.frame</span>(<span class="fu">t</span>(</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">c</span>(res, </span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>                      <span class="at">D=</span><span class="st">"perfect"</span>,</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>                      <span class="at">slope=</span><span class="dv">0</span>, <span class="at">sort=</span><span class="dv">1</span>, <span class="at">Fid.Begin=</span><span class="dv">1</span>, <span class="at">Fid.END=</span><span class="dv">1</span>)</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>                      ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+
+</div>
+<p>Next for a slow increase (reflected by an exponential function):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="do">###all the other patterns</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>res.Simu<span class="ot">&lt;-</span><span class="cn">NULL</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co">#exponential increase</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(sl <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nr.sl){<span class="co">#for each slope</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>   <span class="co">#Fidelity pattern</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    res.exp<span class="ot">&lt;-</span>fidelitysim<span class="sc">::</span><span class="fu">find.Fidelity.exp</span>(<span class="at">time.points=</span>K, </span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>                               Fid.End, Fid.T1, </span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>                               <span class="at">par.slope=</span>slope.seq[sl])</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">#new design matrix</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    A1.exp <span class="ot">&lt;-</span>fidelitysim<span class="sc">::</span><span class="fu">implemMatrix.parallel</span>(<span class="at">nC=</span>I, <span class="at">nT=</span>K, <span class="at">nSw=</span><span class="fu">round</span>(I<span class="sc">/</span><span class="dv">2</span>), </span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>                               <span class="at">pattern=</span>res.exp[,<span class="st">"Fidelity.Prozent"</span>]<span class="sc">/</span><span class="dv">100</span>)</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>     <span class="co">#simulation experiment  </span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    res<span class="ot">&lt;-</span>fidelitysim<span class="sc">::</span><span class="fu">simulation</span>(<span class="at">anzSim=</span>anzSim,</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>                    <span class="at">type=</span><span class="st">"cross-sec"</span>,  <span class="at">K=</span>K,<span class="at">J=</span>J,<span class="at">I=</span>I,</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>                    <span class="at">sigma.1=</span>sigma<span class="fl">.1</span>,<span class="at">sigma.3=</span>sigma<span class="fl">.3</span>,</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>                    <span class="at">mu.0=</span>mu<span class="fl">.0</span>, <span class="at">theta=</span>theta,<span class="at">betas=</span>betas,</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>                    <span class="at">X=</span>X, <span class="at">X.A=</span>A1.exp</span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>                    )</span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">#save results</span></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>    res.Simu<span class="ot">&lt;-</span><span class="fu">rbind</span>(res.Simu,</span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">as.data.frame</span>(<span class="fu">t</span>(<span class="fu">c</span>(</span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>                      res, </span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>                      <span class="at">D=</span><span class="st">"exp"</span>, <span class="at">slope=</span>slope.seq[sl], <span class="at">sort=</span><span class="dv">2</span><span class="sc">+</span>nr.sl<span class="sc">+</span>(nr.sl<span class="sc">-</span>sl<span class="sc">+</span><span class="dv">1</span>),</span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Fid.Begin=</span>Fid.T1, <span class="at">Fid.END=</span>Fid.End)))</span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>For a fast increase (reflected by a logarithmic function):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#logistic increase</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(sl <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nr.sl){<span class="co">#for each slope</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Fidelity pattern</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    res.log<span class="ot">&lt;-</span>fidelitysim<span class="sc">::</span><span class="fu">find.Fidelity.log</span>(<span class="at">time.points=</span>K, </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>                               Fid.End, Fid.T1, </span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>                               <span class="at">par.slope=</span>slope.seq[sl])</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">#new design matrix</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    A1.log <span class="ot">&lt;-</span>fidelitysim<span class="sc">::</span><span class="fu">implemMatrix.parallel</span>(<span class="at">nC=</span>I, <span class="at">nT=</span>K, <span class="at">nSw=</span><span class="fu">round</span>(I<span class="sc">/</span><span class="dv">2</span>), </span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">pattern=</span>res.log[,<span class="st">"Fidelity.Prozent"</span>]<span class="sc">/</span><span class="dv">100</span>)</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">#simulation experiment</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    res<span class="ot">&lt;-</span>fidelitysim<span class="sc">::</span><span class="fu">simulation</span>(<span class="at">anzSim=</span>anzSim,</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">type=</span><span class="st">"cross-sec"</span>, <span class="at">K=</span>K,<span class="at">J=</span>J,<span class="at">I=</span>I,</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>                    <span class="at">sigma.1=</span>sigma<span class="fl">.1</span>,<span class="at">sigma.3=</span>sigma<span class="fl">.3</span>,</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">mu.0=</span>mu<span class="fl">.0</span>, <span class="at">theta=</span>theta,<span class="at">betas=</span>betas,</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">X=</span>X, <span class="at">X.A=</span>A1.log)</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">#save results</span></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>    res.Simu<span class="ot">&lt;-</span><span class="fu">rbind</span>(res.Simu,</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">as.data.frame</span>(<span class="fu">t</span>(<span class="fu">c</span>(</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>                      res, </span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>                      <span class="at">D=</span><span class="st">"log"</span>, <span class="at">slope=</span>slope.seq[sl], <span class="at">sort=</span><span class="dv">1</span><span class="sc">+</span>sl</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>                      , <span class="at">Fid.Begin=</span>Fid.T1, <span class="at">Fid.END=</span>Fid.End)))</span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>  }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>For linear increase:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="do">##linear increase</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>m<span class="ot">&lt;-</span>(Fid.T1<span class="sc">-</span>Fid.End)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>(K<span class="dv">-1</span>))</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Fidelity pattern</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>res.lin<span class="ot">&lt;-</span>fidelitysim<span class="sc">::</span><span class="fu">find.Fidelity.linear</span>(<span class="at">time.points=</span>K, Fid.End, Fid.T1)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co">#ne design matrix</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>A1.lin <span class="ot">&lt;-</span>fidelitysim<span class="sc">::</span><span class="fu">implemMatrix.parallel</span>(<span class="at">nC=</span>I, <span class="at">nT=</span>K, <span class="at">nSw=</span><span class="fu">round</span>(I<span class="sc">/</span><span class="dv">2</span>), </span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>                               <span class="at">pattern=</span>res.lin[,<span class="st">"Fidelity.Prozent"</span>]<span class="sc">/</span><span class="dv">100</span>)</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co">#simulation experiment</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>res<span class="ot">&lt;-</span>fidelitysim<span class="sc">::</span><span class="fu">simulation</span>(<span class="at">anzSim=</span>anzSim,</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">type=</span><span class="st">"cross-sec"</span>, <span class="at">K=</span>K,<span class="at">J=</span>J,<span class="at">I=</span>I,</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">sigma.1=</span>sigma<span class="fl">.1</span>,<span class="at">sigma.3=</span>sigma<span class="fl">.3</span>,</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>                <span class="at">mu.0=</span>mu<span class="fl">.0</span>, <span class="at">theta=</span>theta,<span class="at">betas=</span>betas,</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>                <span class="at">X=</span>X, <span class="at">X.A=</span>A1.lin)</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="co">#save results</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>res.Simu<span class="ot">&lt;-</span><span class="fu">rbind</span>(res.Simu,</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">as.data.frame</span>(<span class="fu">t</span>(<span class="fu">c</span>(</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>                    res, </span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>                    <span class="at">D=</span><span class="st">"linear"</span>, <span class="at">slope=</span><span class="dv">0</span>, <span class="at">sort=</span><span class="dv">2</span><span class="sc">+</span>nr.sl</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>                    , <span class="at">Fid.Begin=</span>Fid.T1, <span class="at">Fid.END=</span>Fid.End)))</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+
+</div>
+<p>Needs <code>time.3</code> minutes time.</p>
+<div class="cell">
+
+</div>
+<p>The figure summarize the results of the several simulations for different fidelity patterns regarding power of the study.</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 8 rows containing missing values (geom_point).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="simulation-step-by-step_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -189,7 +645,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -225,24 +698,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
@@ -254,7 +745,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./additional-statistical-info.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">additional-statistical-info.html</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Detailed statistical information</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
