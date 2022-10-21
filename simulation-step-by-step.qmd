@@ -200,7 +200,7 @@ for the simulation. Its a number how often the sampling and estimation should be
 ```{r anzItglobal}
 
 ## Number of repeats within the simulation ##
-anzSim <- 100
+anzSim <- 1000
 
 ```
 
@@ -274,7 +274,7 @@ against perfect trials, a repetition the simulation experiment for different deg
 of fidelity increase but same settings has to be conducted.  
 We take again the example from above: cross-sectional parallel trial with ten 
 clusters (5 of them getting the intervention, 5 of them not), 7 time points and ten individuals within each cluster and time point. We also assume a fidelity of `r Fid.T1` at the beginning and `r Fid.End` at the end of trial for the intervention group. 
-Here , we investigate on total 7 different fidelity pattern increases, 3 fast increases, 1 linear and 3 slow increases for this design setting.
+Here , we investigate on total 7 different fidelity pattern increases, 3 fast increases, 1 linear and 3 slow increases for this design setting (here the results will be shown for a recommended number of repeats of 10.000).
 
 ```{r, eval=TRUE}
 ### several Slopes indicating the degree of increase ###
@@ -283,15 +283,19 @@ nr.sl<-length(slope.seq)
 
 ```
 
+```{r}
+## Number of repeats within the simulation ##
+anzSim <- 10000
+```
 
-```{r, echo=TRUE}
+
+```{r, echo=FALSE, eval=TRUE}
 
 start_time <- Sys.time()
 
 ```
 
 At first, perfect situation simulation (no deviation fro 100% implementation).
-
 
 
 ```{r, warning=F, message=F, eval=FALSE}
@@ -368,7 +372,7 @@ res.Simu.2<-res.Simu
 
 For several fast increase (reflected by a logarithmic function):
 
-```{r, warning=F, message=F, eval=FALSE}
+```{r, echo=TRUE, warning=F, message=F, eval=FALSE}
 ###all the other patterns
 res.Simu<-data.frame()
 
@@ -434,7 +438,7 @@ res.Simu.2<-rbind(res.Simu.2,
 ```
 
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, eval=TRUE}
 
 # file.tmp<-paste("./results/parallel_results_", Fid.T1, "_", Fid.End, ".csv", sep="")
 # write.table(res.Simu, file=file.tmp)
@@ -442,9 +446,11 @@ res.Simu.2<-rbind(res.Simu.2,
 end_time <- Sys.time()
 time.3<-round(as.numeric((end_time - start_time), units = "mins"),2)
 
+
 ```
 
-Needs 28 minutes time for simulation each scenario 1000 times.
+
+Needs nearly 7h time ($\sim$ n.o. scenarios times 1h) for simulation each scenario 10000 times.
 
 ```{r, echo=FALSE, eval=FALSE}
 
@@ -507,11 +513,11 @@ ggplot(res.plot,
 #   #guides(fill = guide_legend(override.aes = list(shape = NA)))+
   ylim(0.25,1)
 
-ggsave(filename="img/results.Simulation.1000.png")
+ggsave(filename="img/results.Simulation.10000.png")
 ```
 
 The figure @fig-sim summarize the results of the several simulations for different fidelity patterns regarding power of the study.
 
-![Results](img/results.Simulation.1000.png){#fig-sim}
+![Results of Simulation for several fidelity pattern scenarios](img/results.Simulation.10000.png){#fig-sim}
 
 
