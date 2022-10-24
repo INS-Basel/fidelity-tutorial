@@ -1,6 +1,6 @@
 # Step-by-step simulation
 
-![Workflow diagramme of the simulation](img/workflow.png){width=500}
+![Workflow diagramme of the simulation](img/workflow.png){#fig-workflow}
 
 In the following the tutorial is separated in two parts, showing the use for:
 
@@ -12,7 +12,7 @@ In the following the tutorial is separated in two parts, showing the use for:
 
 ## Simulation experiment for one setting
 
-According the [Workflow diagramme of the simulation] corresponds to inner box, here we show how to evaluate the performance of a cluster randomized trial with one specific setting of study design and probably existing specific implementation error (fidelity pattern). 
+According the @fig-workflow corresponds to inner box, here we show how to evaluate the performance of a cluster randomized trial with one specific setting of study design and probably existing specific implementation error (fidelity pattern). 
 
 Within each simulation experiment steps of data sampling and effect estimation, provided by function within the R-package {samplingDataCRT}, were repeated. 
 For explanation see [Detailed statistical information].
@@ -200,7 +200,7 @@ for the simulation. Its a number how often the sampling and estimation should be
 ```{r anzItglobal}
 
 ## Number of repeats within the simulation ##
-anzSim <- 1000
+anzSim <- 100
 
 ```
 
@@ -486,7 +486,7 @@ res.plot<-res.plot[with(res.plot, order(sort)), ]
 <!-- The figure @fig-Simu summarize the results of the several simulations for different fidelity patterns regarding power of the study. -->
 
 
-```{r fig-Simu, fig.width=8, fig.height=8, eval=TRUE, echo=FALSE, message=FALSE, eval=FALSE}
+```{r fig-Simu, fig.width=8, fig.height=8, echo=FALSE, message=FALSE, eval=FALSE}
 library(ggplot2)
 ggplot(res.plot,
                 aes(x=sort, y=Power.Intervention, pch=D))+
@@ -513,7 +513,9 @@ ggplot(res.plot,
 #   #guides(fill = guide_legend(override.aes = list(shape = NA)))+
   ylim(0.25,1)
 
-ggsave(filename="img/results.Simulation.10000.png")
+
+
+#ggsave(filename= paste0("img/", lubridate::today(), "-results.Simulation.10000.png"))
 ```
 
 The figure @fig-sim summarize the results of the several simulations for different fidelity patterns regarding power of the study.
