@@ -1,21 +1,26 @@
 # Step-by-step simulation
 
-![Workflow diagramme of the simulation](img/workflow.png){#fig-workflow}
-
-In the following the tutorial is separated in two parts, showing the use for:
+The following chapter is separated in two parts:
 
 1. Simulation experiment for one setting by choosing between
       - Parallel or Stepped wedge designs   
       - Perfect versus Implementation error situations 
 2. Simulation experiments to comparison of several Fidelity patterns
 
+The descriptions follow along the steps outlined in @fig-workflow : 
+
+```{r, out.width='50%', echo = F}
+#| fig-cap: "Overview of simulation workflow"
+#| label: fig-workflow 
+knitr::include_graphics("img/workflow.png")
+```
 
 ## Simulation experiment for one setting
 
-According the @fig-workflow corresponds to inner box, here we show how to evaluate the performance of a cluster randomized trial with one specific setting of study design and probably existing specific implementation error (fidelity pattern). 
+Following @fig-workflow, we chose to evaluate the performance of a cluster randomized trial (Design choice) and with possible implementation error (fidelity pattern). 
 
 Within each simulation experiment steps of data sampling and effect estimation, provided by function within the R-package {samplingDataCRT}, were repeated. 
-For explanation see [Detailed statistical information].
+For explanation see @sec-statsdetails.
 After repeating the steps of the simulation the obtained effect estimates can be 
 evaluated for the performance of the model. The provided function `performanceMeas()` 
 of the R-package {fidelitysim} calculates the following performance measures of a simulation:  
@@ -200,7 +205,7 @@ for the simulation. Its a number how often the sampling and estimation should be
 ```{r anzItglobal}
 
 ## Number of repeats within the simulation ##
-anzSim <- 100
+anzSim <- 1000
 
 ```
 
@@ -483,9 +488,6 @@ res.plot<-res.plot[with(res.plot, order(sort)), ]
 # res.plot.decr
 ```
 
-<!-- The figure @fig-Simu summarize the results of the several simulations for different fidelity patterns regarding power of the study. -->
-
-
 ```{r fig-Simu, fig.width=8, fig.height=8, echo=FALSE, message=FALSE, eval=FALSE}
 library(ggplot2)
 ggplot(res.plot,
@@ -512,7 +514,6 @@ ggplot(res.plot,
 #   #guides(fill=TRUE)+
 #   #guides(fill = guide_legend(override.aes = list(shape = NA)))+
   ylim(0.25,1)
-
 
 
 #ggsave(filename= paste0("img/", lubridate::today(), "-results.Simulation.10000.png"))

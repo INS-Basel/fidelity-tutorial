@@ -1,4 +1,4 @@
-# Detailed statistical information
+# Detailed statistical information {#sec-statsdetails}
 
 This chapter offers additional statistical information. 
 
@@ -290,8 +290,8 @@ scale_y_continuous(labels=c("Start", 'End'), breaks=c(Fid.T1,Fid.End)*100)
 
 ```{r plotsave, echo=FALSE}
       
-ff<-"img/FidelityPatterns.png"
-ggsave(ff, width = 7, height = 10, dpi=300)
+# ff<-"img/FidelityPatterns.png"
+# ggsave(ff, width = 7, height = 10, dpi=300)
     
 ```
 
