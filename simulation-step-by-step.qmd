@@ -12,7 +12,7 @@ The descriptions follow along the steps outlined in @fig-workflow :
 ```{r, out.width='50%', echo = F}
 #| fig-cap: "Overview of simulation workflow"
 #| label: fig-workflow 
-knitr::include_graphics("img/workflow.png")
+knitr::include_graphics("img/workflow_2.png")
 ```
 
 ## Simulation experiment for one setting
