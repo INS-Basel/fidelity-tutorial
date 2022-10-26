@@ -3,11 +3,11 @@
 The following chapter is separated in two parts:
 
 1. Simulation experiment for one setting by choosing between
-      - Parallel or Stepped wedge designs   
-      - Perfect versus Implementation error situations 
-2. Simulation experiments to comparison of several Fidelity patterns
+      - Parallel or stepped wedge designs   
+      - Studies with different fidelity patterns
+2. Simulation experiments to comparison of several fidelity patterns
 
-The descriptions follow along the steps outlined in @fig-workflow : 
+Figure @fig-workflow provides an overview of the simulation workflow.
 
 ```{r, out.width='50%', echo = F}
 #| fig-cap: "Overview of simulation workflow"
@@ -17,24 +17,10 @@ knitr::include_graphics("img/workflow_2.png")
 
 ## Simulation experiment for one setting
 
-Following @fig-workflow, we chose to evaluate the performance of a cluster randomized trial (Design choice) and with possible implementation error (fidelity pattern). 
+According to the inner frame of Figure @fig-workflow, several design choices have to be made to evaluate the performance of a cluster randomized trial (Design choice) and with possible implementation error (fidelity pattern). 
 
-Within each simulation experiment steps of data sampling and effect estimation, provided by function within the R-package {samplingDataCRT}, were repeated. 
-For explanation see @sec-statsdetails.
-After repeating the steps of the simulation the obtained effect estimates can be 
-evaluated for the performance of the model. The provided function `performanceMeas()` 
-of the R-package {fidelitysim} calculates the following performance measures of a simulation:  
-
-- Bias: mean deviation of the estimates from the true value of the parameter of 
-  interest (intervention effect) is an indicator of accuracy  
-  
-- Coverage: measurement used to control the Type I error rate for testing the 
-  null hypothesis (H0) of no effect  
-  
-- Power: proportion of simulation samples in which the H0 of no effect is rejected 
-  at a significance level of $\alpha$ when H0 is false (is related to the empirical Type II error rate).  
-
-To simplify the process of the whole simulation experiment the R-function `simulation()` is provided within the R-package {fidelitysim}. The function includes the steps: data sampling for a specific design and existing implementation error, effect estimation, performance measures calculation. 
+Within each simulation experiment steps of data sampling and effect estimation will be repeated. 
+For explanation see @sec-statsdetails. To simplify the process of the whole simulation experiment the R-function `simulation()` is provided within the R-package {fidelitysim}. The function includes the steps: data sampling for a specific design and existing implementation error, effect estimation, performance measures calculation. 
 Hence, the input of the function is the specification parameter:
 
   - number of repeats for the simulation
@@ -47,22 +33,35 @@ Hence, the input of the function is the specification parameter:
   - effect estimates
   - performance measures
   
+After repeating the steps of the simulation the obtained effect estimates can be 
+evaluated for the performance of the model. The provided function `performanceMeas()` 
+of the R-package {fidelitysim} calculates and provides the following performance measures of a simulation:  
 
-The usage is shown here for a parallel design trail, where the difference of the method application regarding the parameter setting for other design is explained. Be sure necessary packages are loaded:
+- Bias: mean deviation of the estimates from the true value of the parameter of 
+  interest (intervention effect) is an indicator of accuracy  
+  
+- Coverage: measurement used to control the Type I error rate for testing the 
+  null hypothesis (H0) of no effect  
+  
+- Power: proportion of simulation samples in which the H0 of no effect is rejected 
+  at a significance level of $\alpha$ when H0 is false (is related to the empirical Type II error rate).  
+
+In the following, we will show an example of a whole simulation experiment for a parallel cluster randomized trial. Further we will point out necessary adaptions for stepped-wedge designs (regarding the parameter setting).
+
+First, make sure that necessary packages are loaded:
 
 
 ```{r pkgs}
 # load necessary packages
 library(fidelitysim)
 library(samplingDataCRT)
-#library(ggplot2)
 ```
 
 
 One setting includes the specification of :
 
 1. Study design
-2. Indication if there are deviations from perfect situations or not
+2. Assumptions about fidelity pattern
 3. Model parameter
 4. Iterations of the simulation
 
@@ -71,26 +70,28 @@ and finally,
 5. the Simulation experiment can be performed.
 
 
-### Study design
+### Study design {#sec-studydesign}
 
 Based on the study setup, the following parameters for the study design need to be defined: 
 
 - No. of clusters (e.g hospitals)
 - No. of individuals per cluster (and time point) as the cluster size
 - No. of time points the cluster were followed
-- Design type controls if individuals will be fowllowed over time (cross-sectional or longitudinal): cross-sectional type, which indicates trials where individuals within the cluster can change over time points
+- Design type controls if individuals will be followed over time (cross-sectional or longitudinal): cross-sectional type, which indicates trials where individuals within the cluster can change over time points
 
 A design matrix according the study design has to be determined by the  function `designMatrix()`. Here, two arguments are specific for the different types of studies. If the `design` argument is set 'parallel', then the parameter `nSW` indicates here the number of clusters are being control group. 
-If choosing `design = "SWD"` (which is also set by default), the he parameter `nSW` indicates here the number of cluster switches per time point from control to intervention group.
+If choosing `design = "SWD"` (which is also set by default), the he parameter `nSW` indicates the number of cluster switches per time point from control to intervention group.
 
-Then we determine the corresponding design matrix for a parallel cluster randomized study with:
+For our example we will use the following parameter: 
 
-- 6 cluster with a
-- cluster size of 10 measured at 
-- 7 time points, where 
-- 3 clusters in each, the control as well as in the intervention group, are included
+- Number of clusters: 6
+- Cluster size: 10  
+- Number of time points: 7 
+- Cross-sectional design
 
-as follows: 
+and 3 clusters are in the control and 3 clusters in the intervention group.
+
+In the next step we determine the corresponding design matrix for a parallel cluster randomized study with this specific set of design parameters as follows: 
 
 ```{r design-prll}
 ## Design matrix ##
@@ -99,24 +100,39 @@ I <- 6 # number of clusters
 J <- 10 # number of individuals per cluster (used later in simulation-step)
 K <- 7 # number of time points
 Sw <- 1 # number of cluster switches per time point can be manually set
+type<-"cross-sec"
 
 # design matrix for parallel design
-(designMat_prll <- designMatrix(nC = I, nT = K, nSw = round(I / 2), design = "parallel"))
+(designMat_prll <- designMatrix(nC = I, nT = K, nSw = round(I / 2), 
+                                design = "parallel"))
 
 ```
 
 
-### Indication if there are deviations from perfect situations or not
+### Assumptions about fidelity pattern
 
-Further, in the function for the simulation by specifying a second design matrix `X.A`, we can indicate if there are deviations from the perfect situation present or not. Since we simulation perfect situation with no deviation, both arguments for the design matrices `X` and `X.A` are the same within the latter used R-function `simulation()` (see [Simulation experiment]). If deviations from perfect situation should be simulated, a second design matrix to which indicates the pattern of fidelity according to this study design has to be provided as well. 
+The following step is a central part of this tutorial. We want to examine different fidelity patterns and their implications for the study effects. 
 
-To consider the deviation from perfect implementation of an intervention 
-(100% fidelity) we add fractional values to estimate the degree 
-of the deviation and its effect on the study effects. 
-Therefor 3 functions in within the R-package {fidelitysim} can be used to specify several fidelity patterns. For explanation of all kind of fidelity patters see [Determine different fidelity patterns]. 
-The conducted fidelity patterns can then be pushed to the design matrix with the R-package {samplingDataCRT}, see for more explanation [Fidelity patterns]. 
+To simulate a specific fidelity pattern, a second design matrix indicating the pattern of fidelity has to be provided and indicates if there are deviations from the perfect situation (100% fidelity) present or not. For the simulation we have to add fractional values according to the chosen fidelity pattern. There are 3 functions in within the R-package {fidelitysim} that can be used to specify several fidelity patterns. The patterns can be specified based on a slow, linear or fast increase and the respective start and end value for fidelity. For further explanation of fidelity patterns see @sec-fidpatterns.
+The selected fidelity patterns can then be pushed to the design matrix with the R-package
+{samplingDataCRT}, for more explanation see @sec-determinediffdesignmatrix.
 
-Using the same parallel design trial example and assume a linear increase of fidelity from 40% to 80% from time point 1 to the end of trial (time point `K`) 3 arguments are specified: 
+For our example we use the same design parameters, i.e. parallel cluster randomized trial, 6 timepoints, etc. and assume a linear increase of fidelity from 40% to 80% from the first measurement point after introduction of the intervention to the final measurement point (time point `K`). Based on these parameters we will create a new design matrix `X.A` that incorporates fractional values based on the provided fidelity pattern. This new design matrix will be used as a reference matrix in our simulation.
+
+<!-- ############################ -->
+
+<!-- Further, in the function for the simulation by specifying a second design matrix `X.A`, we can indicate if there are deviations from the perfect situation present or not. Since we simulation perfect situation with no deviation, both arguments for the design matrices `X` and `X.A` are the same within the latter used R-function `simulation()` (see [Simulation experiment]). If deviations from perfect situation should be simulated, a second design matrix to which indicates the pattern of fidelity according to this study design has to be provided as well.  -->
+
+<!-- To consider the deviation from perfect implementation of an intervention  -->
+<!-- (100% fidelity) we add fractional values to estimate the degree  -->
+<!-- of the deviation and its effect on the study effects.  -->
+<!-- Therefor 3 functions in within the R-package {fidelitysim} can be used to specify several fidelity patterns. For explanation of all kind of fidelity patters see [Determine different fidelity patterns].  -->
+<!-- The conducted fidelity patterns can then be pushed to the design matrix with the R-package {samplingDataCRT}, see for more explanation [Fidelity patterns].  -->
+
+<!-- Using the same parallel design trial example and assume a linear increase of fidelity from 40% to 80% from time point 1 to the end of trial (time point `K`)  -->
+
+
+3 arguments has to be specified to determine the fidelity pattern using the provided function `find.Fidelity.linear`: 
 
 ```{r params-fidel-prll}
 ### Fidelity parameters ###
@@ -137,7 +153,8 @@ m <- (Fid.T1 - Fid.End) / (1 - (K - 1))
 res.lin <- find.Fidelity.linear(time.points = K, Fid.End, Fid.T1)
 ```
 
-Which is then supplied to create a design matrix that reflects the deviation from perfect implementation by fractional values for each time point and cluster (find the other two functions for slow and fast increase here [Determine different fidelity patterns]):    
+(Find the application of the other two functions for slow and fast increase @sec-fidpatterns.)
+Create the new design matrix using the function `implemMatrix.parallel` :    
 
 
 ```{r fidel-matr-prll}
@@ -148,25 +165,43 @@ Which is then supplied to create a design matrix that reflects the deviation fro
 ))
 ```
 
-This matrix reflecting implementation error is then used in the simulation as a reference matrix (note the difference in arguments `X = designMat_prll` and `X.A = fidelMat_prll` within the latter used R-function `simulation()` in section [Simulation experiment], which did not differ in the *perfect* simulation). 
+This matrix reflect the fidelity pattern, shows the implementation error. Both design matrices are latter used for the simulation as arguments `X = designMat_prll` and `X.A = fidelMat_prll` for the R-function `simulation()` in @sec-simulexp (note, both do not differ in the *perfect* situations). 
 
-### Model parameter
+### Specifying model parameter {#sec-modelparam}
 
-Data for a cluster randomized trial is sampled from a model provided by the package {samplingDataCRT}. Therefore, and in addition to the design parameters, we have to define the following model parameters as well:
+In addition to the design parameters, we have to define the following model parameters as well:
 
-- baseline mean of the outcome of interest (e.g. mean quality of life score) of 10
-- intervention effect (the change of scores after intervention) of 1
-- kind of time trend (effect of each time point during followed time points)
-- a between clusters and error variance regrding the outcome of interest that results in an inter-cluster correlation coefficient (ICC)
+- Baseline mean of the outcome of interest (e.g. mean quality of life score) $\mu_0$
+- Intervention effect (the change of scores after intervention) $\Theta$
+- Between cluster and error variance $\sigma_c$, $\sigma_e$ which specify the inter-cluster correlation coefficient ICC
+-	If applicable: Time trend (effect of each time point during followed time points)
 
-Define an hypothetical trial with:
+The values has to be choose from expert knowledge on the scientific question, which want to be answered, in relation to the outcome of interest. In general, consideration on sample size calculation is done before conducting a study and determine the parameter.
 
-- baseline mean of the outcome of interest of 10
-- intervention effect of 1
+For our example we use the following model parameter: 
+
+- baseline mean = 10
+- intervention effect = 1
 - no time trend
-- a between clusters and error variance that results in an ICC of 0.001
+- ICC of 0.001
 
-as follows:
+<!-- ########### -->
+
+<!-- Data for a cluster randomized trial is sampled from a model provided by the package {samplingDataCRT}. Therefore, and in addition to the design parameters, we have to define the following model parameters as well: -->
+
+<!-- - baseline mean of the outcome of interest (e.g. mean quality of life score) of 10 -->
+<!-- - intervention effect (the change of scores after intervention) of 1 -->
+<!-- - kind of time trend (effect of each time point during followed time points) -->
+<!-- - a between clusters and error variance regarding the outcome of interest that results in an inter-cluster correlation coefficient (ICC) -->
+
+<!-- Define an hypothetical trial with: -->
+
+<!-- - baseline mean of the outcome of interest of 10 -->
+<!-- - intervention effect of 1 -->
+<!-- - no time trend -->
+<!-- - a between clusters and error variance that results in an ICC of 0.001 -->
+
+<!-- as follows: -->
 
 ```{r params-prll}
 ## Model parameter ##
@@ -186,31 +221,38 @@ sigma.3 <- sigma.1 * sqrt(0.001 / (1 - 0.001))
 (ICC <- sigma.3^2 / (sigma.3^2 + sigma.1^2))
 ```
 
-Choosing a `longitudinal`  instead of a `cross-sectional` design for the study demand the specification of a third variance (see for more detail into [Sampling data of a cluster randomized trial with a given design]).
 
-:::{.rmdwarning}
-DIANA - can we say to recommend these parameters as default values?
-what does mu.0 mean? How do I (non-statistician) know which values to choose?
-From a practical point of view I would expect to have a comment on this.
+When choosing a longitudinal design instead of a cross-sectional design a third variance need to be specified (see for more detail into @sec-sampdatacrt).
 
-:::
+<!-- Choosing a `longitudinal`  instead of a `cross-sectional` design for the study demand the specification of a third variance (see for more detail into [Sampling data of a cluster randomized trial with a given design]). -->
+
+<!-- :::{.rmdwarning} -->
+<!-- DIANA - can we say to recommend these parameters as default values? -->
+<!-- what does mu.0 mean? How do I (non-statistician) know which values to choose? -->
+<!-- From a practical point of view I would expect to have a comment on this. -->
+
+<!-- ::: -->
 
 
-### Iterations of the simulation
+### Defining number of iterations for the simulation
 
-In addition to the parameters set above, we need to define the number of iterations 
-for the simulation. Its a number how often the sampling and estimation should be repeated to finally calculate the performance measures. The literature recommends between 10,000 and 100,000 repeats for valid results, but this comes at a time cost. To simplify this, we use n = 1,000 here.
+In addition to the parameters set above, we need to define the number of iterations for the
+simulation. The number determines how often the sampling and estimation should be repeated to finally calculate the performance measures. In the literature 10,000 and 100,000 iterations are recommended to obtain valid results, however, this validity comes at a time cost. In our example we will set n = 1,000 iterations with regard to the computing time (and can be set by the user under consideration of the own computational power). 
+
+
+<!-- In addition to the parameters set above, we need to define the number of iterations  -->
+<!-- for the simulation. Its a number how often the sampling and estimation should be repeated to finally calculate the performance measures. The literature recommends between 10,000 and 100,000 repeats for valid results, but this comes at a time cost. To simplify this, we use n = 1,000 here. -->
 
 
 ```{r anzItglobal}
 
-## Number of repeats within the simulation ##
+## Number of iterations of the simulation ##
 anzSim <- 1000
 
 ```
 
 
-### Simulation experiment
+### Simulation experiment {#sec-simulexp} 
 
 Since we set all necessary arguments for the usage of the provided simulation function:
 
@@ -230,8 +272,8 @@ start_time <- Sys.time()
 # linear increase of fidelity
 res.Simu.parallel.lin <- simulation(
   anzSim = anzSim, #Simulation parameter
-  type = "cross-sec", K = K, J = J, I = I, #design paramter
-  sigma.1 = sigma.1, sigma.3 = sigma.3,
+  type = type, K = K, J = J, I = I, #design parameter
+  sigma.1 = sigma.1, sigma.3 = sigma.3, #model parameters
   mu.0 = mu.0, theta = theta, betas = betas, #model parameters
   X = designMat_prll, X.A = fidelMat_prll #design matrices
 )
@@ -239,14 +281,14 @@ res.Simu.parallel.lin <- simulation(
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 end_time <- Sys.time()
 time.sim <- round(as.numeric((end_time - start_time), units = "mins"),2)
 ```
 
 
-Repeating the simulation `r anzSim` times for this design a computational time of
-`r time.sim` min is needed.
+(To notice, repeating the simulation `r anzSim` times for this design a computational time of
+`r time.sim` min is needed.)
 
 The output of the simulation provides a total of n =`r length(res.Simu.parallel.lin)` results, among the following performance parameters (see also Introduction of this Chapter): 
 
@@ -254,32 +296,40 @@ The output of the simulation provides a total of n =`r length(res.Simu.parallel.
   - Coverage
   - Power  
   
-Hence, the mean estimate of the intervention effect from all iterations and the 
+The mean estimate of the intervention effect from all iterations and the 
 power of the design can be accessed like this:  
 
 
 ```{r results-fidel-prll}
 # mean estimated intervention effect
-res.Simu.parallel.lin["intervention Mean ."]
+round(res.Simu.parallel.lin["intervention Mean ."],3)
 # estimated power
-(res.Simu.parallel.lin["Power.Intervention"])
+round(res.Simu.parallel.lin["Power.Intervention"],3)
 ```
 
 ```{r, echo=FALSE}
-(pow.par.lin<-round(res.Simu.parallel.lin["Power.Intervention"],3))
+pow.par.lin<-round(res.Simu.parallel.lin["Power.Intervention"],3)
 ```
 
-We obtain a power of `r pow.par.lin` to detect an intervention effect of `r theta` within an parallel study with `r I` clusters followed `r K` time points and a cluster size of `r J` when an linear increase of the fidelity from `r Fid.T1` % to `r Fid.End` is achieved after implementation of the intervention until end of the study.
+We obtain a power of `r pow.par.lin` to detect an intervention effect of `r theta` within an parallel study with `r I` clusters followed `r K` time points and a cluster size of `r J` when an linear increase of the fidelity from `r Fid.T1*100` % to `r Fid.End*100` is achieved until end of the study.
 
-## Comparison of several Fidelity patterns for a parallel design
+## Comparison of several Fidelity patterns
 
-See again also for fidelity patterns conduction in [Fidelity patterns]. 
-To compare the effect of different degrees of increasing fidelity after implementation 
-against perfect trials, a repetition the simulation experiment for different degrees
-of fidelity increase but same settings has to be conducted.  
-We take again the example from above: cross-sectional parallel trial with ten 
-clusters (5 of them getting the intervention, 5 of them not), 7 time points and ten individuals within each cluster and time point. We also assume a fidelity of `r Fid.T1` at the beginning and `r Fid.End` at the end of trial for the intervention group. 
-Here , we investigate on total 7 different fidelity pattern increases, 3 fast increases, 1 linear and 3 slow increases for this design setting (here the results will be shown for a recommended number of repeats of 10.000).
+To compare the effect of different fidelity patterns, a repetition of the simulation has to be
+conducted.
+
+We will continue with our example from before (see @sec-studydesign - @sec-modelparam) and examine in total seven different fidelity patterns. 
+We will assume (A) three types of slow increases, (B) one linear increase and (C) three types of fast increases of fidelity for this design setting (see @sec-fidpatterns for further explanation) and compare with the perfect situation. 
+
+<!-- ####### -->
+
+<!-- See again also for fidelity patterns conduction in [Fidelity patterns].  -->
+<!-- To compare the effect of different degrees of increasing fidelity after implementation  -->
+<!-- against perfect trials, a repetition the simulation experiment for different degrees -->
+<!-- of fidelity increase but same settings has to be conducted.   -->
+<!-- We take again the example from above: cross-sectional parallel trial with ten  -->
+<!-- clusters (5 of them getting the intervention, 5 of them not), 7 time points and ten individuals within each cluster and time point. We also assume a fidelity of `r Fid.T1` at the beginning and `r Fid.End` at the end of trial for the intervention group.  -->
+<!-- Here , we investigate on total 7 different fidelity pattern increases, 3 fast increases, 1 linear and 3 slow increases for this design setting (here the results will be shown for a recommended number of repeats of 10.000). -->
 
 ```{r, eval=TRUE}
 ### several Slopes indicating the degree of increase ###
@@ -288,7 +338,7 @@ nr.sl<-length(slope.seq)
 
 ```
 
-```{r}
+```{r, echo=FALSE}
 ## Number of repeats within the simulation ##
 anzSim <- 10000
 ```
@@ -302,7 +352,6 @@ start_time <- Sys.time()
 
 At first, perfect situation simulation (no deviation fro 100% implementation).
 
-
 ```{r, warning=F, message=F, eval=FALSE}
 ################################
 # perfect implementation
@@ -314,9 +363,9 @@ X<-samplingDataCRT::designMatrix(nC=I, nT=K, nSw=round(I/2), design="parallel")
 res<-fidelitysim::simulation(
                   anzSim=anzSim, #Simulation parameter
                   type="cross-sec", K=K,J=J,I=I, #design paramter
-                   sigma.1=sigma.1,sigma.3=sigma.3, #model parameters
-                   mu.0=mu.0, theta=theta,betas=betas,
-                   X=X, X.A=X #design matrices
+                  sigma.1=sigma.1,sigma.3=sigma.3, #model parameters
+                  mu.0=mu.0, theta=theta,betas=betas,
+                  X=X, X.A=X #design matrices
                   )
 res<-as.data.frame(t(res))
 
@@ -336,7 +385,7 @@ res.Sim.diffFid<-data.frame(res,
 # utils::write.table(res.Sim.diffFid, file=file.tmp)
 ```
 
-Next for several slow increase (reflected by an exponential function):
+Next for (A) several slow increase (reflected by an exponential function):
 
 ```{r, warning=F, message=F, eval=FALSE}
 ###all the other patterns
@@ -363,7 +412,8 @@ for(sl in 1:nr.sl){#for each slope
     #save results
     res.Simu<-rbind(res.Simu,
                    data.frame( res, 
-                      D="exp", slope=slope.seq[sl], sort=2+nr.sl+(nr.sl-sl+1), Fid.Begin=Fid.T1, Fid.END=Fid.End)
+                      D="exp", slope=slope.seq[sl], sort=2+nr.sl+(nr.sl-sl+1), 
+                      Fid.Begin=Fid.T1, Fid.END=Fid.End)
     )
 
 }
@@ -375,7 +425,30 @@ for(sl in 1:nr.sl){#for each slope
 res.Simu.2<-res.Simu
 ```
 
-For several fast increase (reflected by a logarithmic function):
+
+For (B) linear increase:
+
+```{r, warning=F, message=F, eval=FALSE}
+
+##linear increase
+m<-(Fid.T1-Fid.End)/(1-(K-1))
+#Fidelity pattern
+res.lin<-fidelitysim::find.Fidelity.linear(time.points=K, Fid.End, Fid.T1)
+#ne design matrix
+A1.lin <-fidelitysim::implemMatrix.parallel(nC=I, nT=K, nSw=round(I/2), 
+                               pattern=res.lin[,"Fidelity.Prozent"]/100)
+#simulation experiment
+res<-fidelitysim::simulation(anzSim=anzSim,
+                type="cross-sec", K=K,J=J,I=I,
+                sigma.1=sigma.1,sigma.3=sigma.3,
+                mu.0=mu.0, theta=theta,betas=betas,
+                X=X, X.A=A1.lin)
+res<-as.data.frame(t(res))
+
+```
+
+
+For (C) several fast increase (reflected by a logarithmic function):
 
 ```{r, echo=TRUE, warning=F, message=F, eval=FALSE}
 ###all the other patterns
@@ -400,7 +473,8 @@ for(sl in 1:nr.sl){#for each slope
     #save results
     res.Simu<-rbind(res.Simu,
                    data.frame( res, 
-                      D="log", slope=slope.seq[sl], sort=1+sl, Fid.Begin=Fid.T1, Fid.END=Fid.End)
+                      D="log", slope=slope.seq[sl], sort=1+sl, 
+                      Fid.Begin=Fid.T1, Fid.END=Fid.End)
     )
   }
 
@@ -411,26 +485,6 @@ for(sl in 1:nr.sl){#for each slope
 res.Simu.2<-rbind(res.Simu.2,res.Simu)
 ```
 
-For linear increase:
-
-```{r, warning=F, message=F, eval=FALSE}
-
-##linear increase
-m<-(Fid.T1-Fid.End)/(1-(K-1))
-#Fidelity pattern
-res.lin<-fidelitysim::find.Fidelity.linear(time.points=K, Fid.End, Fid.T1)
-#ne design matrix
-A1.lin <-fidelitysim::implemMatrix.parallel(nC=I, nT=K, nSw=round(I/2), 
-                               pattern=res.lin[,"Fidelity.Prozent"]/100)
-#simulation experiment
-res<-fidelitysim::simulation(anzSim=anzSim,
-                type="cross-sec", K=K,J=J,I=I,
-                sigma.1=sigma.1,sigma.3=sigma.3,
-                mu.0=mu.0, theta=theta,betas=betas,
-                X=X, X.A=A1.lin)
-res<-as.data.frame(t(res))
-
-```
 
 ```{r, echo=FALSE, eval=FALSE}
 #save results
@@ -455,7 +509,6 @@ time.3<-round(as.numeric((end_time - start_time), units = "mins"),2)
 ```
 
 
-Needs nearly 7h time ($\sim$ n.o. scenarios times 1h) for simulation each scenario 10000 times.
 
 ```{r, echo=FALSE, eval=FALSE}
 
@@ -519,7 +572,7 @@ ggplot(res.plot,
 #ggsave(filename= paste0("img/", lubridate::today(), "-results.Simulation.10000.png"))
 ```
 
-The figure @fig-sim summarize the results of the several simulations for different fidelity patterns regarding power of the study.
+The figure @fig-sim summarize the results of the several simulations for different fidelity patterns regarding power of the study. The results shown are performed by 10,000 iterations for the simulation to have precise estimates. For this design setting and number of iteration (n=10,000), a computational time of 7 hours is needed.
 
 ![Results of Simulation for several fidelity pattern scenarios](img/results.Simulation.10000.png){#fig-sim}
 

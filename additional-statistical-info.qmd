@@ -28,7 +28,7 @@ is needed, for the last {lme4}. How to install and load see [Introduction].
 The first steps is done once and the latter two are used repeatedly 
 through one simulation experiment within each scenario setting specified in step 1.
 
-### Determining the design matrix regarding the chosen design
+### Determining the design matrix regarding the chosen design 
 
 To specify a cluster randomized study the following parameter has to be determined:
 
@@ -65,7 +65,7 @@ J<-10 #Subjects =  Number of individuals per cluster
 ```
 
 
-### Sampling data of a cluster randomized trial with a given design
+### Sampling data of a cluster randomized trial with a given design {#sec-sampdatacrt}
 
 To sample data for a cluster randomized trial using sampling from a **multivariate 
 normal distribution** provided by the package {samplingDataCRT}, several model parameter has also be specified:
@@ -132,7 +132,8 @@ parameters<-c(mu.0, betas, theta)
 #sample complete data given the setup
 # study design type = cross-sectional
 type<-"cross-sec" 
-sample.data<-samplingDataCRT::sampleData(type = type, K=K,J=J,I=I, D=D, V=V, parameters=parameters)
+sample.data<-samplingDataCRT::sampleData(type = type, K=K,J=J,I=I, 
+                                         D=D, V=V, parameters=parameters)
 
 ```
 
@@ -164,7 +165,7 @@ lme4::lmer(val~intervention+measurement + (1|cluster), data=sample.data)
 This process of sampling data and effect estimation from the data will be used repeatedly 
 through the simulation experiment within each scenario setting.
 
-## Determine differrent design matrices
+## Determine differrent design matrices {#sec-determinediffdesignmatrix} 
 
 The function `designMatrix` of the R-package {samplingDataCRT}
 provides the design matrix of cluster randomized trials with several study designs, 
@@ -190,7 +191,8 @@ K <- 7 # number of time points
 Sw <- round(I / 2) # number of cluster within the control group
 
 # design matrix for parallel design
-(designMat_prll <- samplingDataCRT::designMatrix(nC = I, nT = K, nSw = round(I / 2), design = "parallel"))
+(designMat_prll <- samplingDataCRT::designMatrix(nC = I, nT = K, nSw = round(I / 2), 
+                                                 design = "parallel"))
 
 ```
 
@@ -209,11 +211,12 @@ K <- 7 # number of time points
 Sw <- 1 # number of cluster switches per time point can be manually set
 
 # design matrix of "SWD"
-(designMat_SWD <- samplingDataCRT::designMatrix(nC = I, nT = K, nSw = Sw, design = "SWD"))
+(designMat_SWD <- samplingDataCRT::designMatrix(nC = I, nT = K, 
+                                                nSw = Sw, design = "SWD"))
 
 ```
 
-## Determine different fidelity patterns
+## Determine different fidelity patterns {#sec-fidpatterns} 
 
 Fidelity refers to the degree to which an intervention was implemented as it was prescribed or intended. 
 We aim to include different patterns of how fidelity might increase over time to estimate the respective effects on power of the study. To describe hypothetical fidelity patterns of increasing fidelity (slow, linear, fast) different mathematical functions (i.e. logistic, linear and exponential curves) are implemented. By considering different values for the slope parameter we can cover a range of fidelity patterns. The slope parameter ranges form $(0,\infty)$, where a slope parameter near to $0$ indicates a increase far away from a linear (fast increase upper left corner, slow increase right bottom corner curve) and a great slope parameter near to linear (See figure @fig-pattern ). 
@@ -244,10 +247,12 @@ nr.sl<-length(slope.seq)
 ##############################################################################
 res.plot.Patterns<-NULL
 for(sl in slope.seq){
- res<-fidelitysim::find.Fidelity.log(time.points=T.points, Fid.End, Fid.T1, par.slope=sl)
+ res<-fidelitysim::find.Fidelity.log(time.points=T.points, Fid.End, Fid.T1, 
+                                     par.slope=sl)
  res<-data.frame(res, FUN="log", slope=sl)
  res.plot.Patterns<-rbind(res.plot.Patterns, res)
- res<-fidelitysim::find.Fidelity.exp(time.points=T.points, Fid.End, Fid.T1, par.slope=sl)
+ res<-fidelitysim::find.Fidelity.exp(time.points=T.points, Fid.End, Fid.T1, 
+                                     par.slope=sl)
  res<-data.frame(res, FUN="exp", slope=sl)
  res.plot.Patterns<-rbind(res.plot.Patterns, res)
       
@@ -256,7 +261,8 @@ for(sl in slope.seq){
 #fidelity pattern for linear increase
 #####################################
 res.lin<-fidelitysim::find.Fidelity.linear(time.points=T.points, Fid.End, Fid.T1)
-res.plot.Patterns<-rbind(res.plot.Patterns, data.frame(res.lin, FUN="linear", slope=1))
+res.plot.Patterns<-rbind(res.plot.Patterns, data.frame(res.lin, FUN="linear", 
+                                                       slope=1))
     
 ```
 
@@ -323,7 +329,8 @@ Fid.End<-0.8
 slope.seq<-5
   
 #exponential function to determine slow increase
-(res.exp<-fidelitysim::find.Fidelity.exp(time.points=K, Fid.End, Fid.T1, par.slope=slope.seq))
+(res.exp<-fidelitysim::find.Fidelity.exp(time.points=K, Fid.End, Fid.T1, 
+                                         par.slope=slope.seq))
 #determine correspondingdesign matrix
 (A1.exp <-fidelitysim::implemMatrix.parallel(nC=I, nT=K, nSw=Sw, 
                                 pattern=res.exp[,"Fidelity.Prozent"]/100))
@@ -368,7 +375,8 @@ Fid.End<-1
 slope.seq<-0.2
 
 #logistic function to determine fast increase
-(res.log<-fidelitysim::find.Fidelity.log(time.points=K-1, Fid.End, Fid.T1, par.slope=slope.seq))
+(res.log<-fidelitysim::find.Fidelity.log(time.points=K-1, Fid.End, Fid.T1, 
+                                         par.slope=slope.seq))
 (A1.log <-samplingDataCRT::implemMatrix.SWD(nC=I, nT=K, nSw=Sw, 
                                 pattern=res.log[,"Fidelity.Prozent"]/100))
 ```

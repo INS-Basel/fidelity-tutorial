@@ -3,20 +3,19 @@
 This online tutorial serves as a hands-on guide for researchers 
 to replicate the simulation described in 
 
-[our paper].  
+[The unrecognized role of fidelity in hybrid effectiveness-implementation trials: simulation study and guidance for implementation researchers].  
 
-This supplementary material was designed with regard to support applied 
-researchers (*not* statisticians) to adapt the simulation with required 
+This supplementary material was designed to support applied 
+researchers to adapt the simulation with required 
 parameters for their own study. 
 Consequently, the content is split in the following chapters:  
 
 - Chapter 1 gives an overview of the technical requirements
 
-- Chapter 2 describes step-by-step how to conduct the simulation for a specific research study,
-  based on parallel or stepped wedge CRTs, furthermore show the comparison of several fidelity patterns 
+- Chapter 2 describes the step-by-step approach how to conduct the simulation for a specific research study,
+  based on parallel or stepped wedge CRTs, and furthermore show the comparison of several fidelity patterns 
 
- - Chapter 3 optionally provides additional statistical information, but does *not* need to be consulted 
-   to be able to run the simulation
+ - Chapter 3 provides optional statistical information (for a detailed understanding of the method)
 
 
 ## Citation {.unnumbered}
@@ -27,7 +26,6 @@ and the paper by the reference of the original paper as in:
 [our paper]
 
 
-## Comparison to other tools
 
 
 
