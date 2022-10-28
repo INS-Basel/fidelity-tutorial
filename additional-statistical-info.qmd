@@ -6,12 +6,9 @@ This chapter offers additional statistical information.
 2. How to conduct design matrices
 3. How to determine fidelity patterns and corresponding design matrices
 
-
 ## Explanation of simulation experiment and provided corresponding function
 
-For a simulation experiment like in 
-[Tutorial] it is not necessary to understand the whole statistical modeling 
-background, which is figured out here.
+For a simulation experiment it is not necessary to understand the whole statistical modeling background, which is figured out here.
 
 Each simulation step includes three necessary steps:
 
@@ -23,10 +20,9 @@ Each simulation step includes three necessary steps:
 
 and will be explained with more detail in the following subsections. 
 
-For the first 2 steps the provided R-package {samplingDataCRT} v1.0 [@R-samplingDataCRT] 
-is needed, for the last {lme4}. How to install and load see [Introduction]. 
-The first steps is done once and the latter two are used repeatedly 
-through one simulation experiment within each scenario setting specified in step 1.
+For the first  two steps, the R-package {samplingDataCRT} v1.0 [@R-samplingDataCRT] is needed, for the last {lme4} [@R-lme4]. 
+The first step is done once and the latter two are used repeatedly 
+through one simulation experiment within each scenario.
 
 ### Determining the design matrix regarding the chosen design 
 
@@ -44,7 +40,7 @@ including parameter settings for a reference setup of the simulation experiment:
 *a cross-sectional stepped wedge cluster randomized trial with 10 nursing homes, 
 6 time points and 10 individuals* within each nursing home and time point (see main article). 
 All parameters can be adapted to an own practical example. 
-The resulting reference design matrix can be create manually (by create a corresponding matrix) or by the provided R-function `designMatrix()`.
+The resulting reference design matrix can be create manually (by create a corresponding matrix) or by `designMatrix()`.
 
 
 ```{r}
@@ -92,7 +88,7 @@ betas<-rep(0, K-1)  # no Time trend, but could be included
 
 # variability within or error variance (H&H sigma)
 sigma.1<-2    
-# variability within clusters, if longitudina data
+# variability within clusters, if longitudinal data
 sigma.2<-NULL
 # between clusters variability (H&H tau)
 sigma.3<-sigma.1*sqrt(0.001/(1-0.001))    
@@ -110,12 +106,11 @@ To note, by choosing **longitudinal or cross-sectional design**, we need to spec
   - within cluster (or between individuals) variability
   - within individuals (or error) variability
 - two-level design (cross-sectional data):
-  - between clusters variability [$\sigma$ put this reference here Hussey and Hughes 2007]
-  - within cluster (or error) variability [ $\tau$ put this reference here Hussey and Hughes 2007]
+  - between clusters variability $\sigma$ [@HUSSEY2007182]
+  - within cluster (or error) variability $\tau$ [@HUSSEY2007182]  
 
-A complete data set for a special design with a given setup can be sampled by the given function R-function {sampleData()}. Therefore,the complete data design matrix and the covariance-variance matrix for the data given the design are also needed to be specified, which is provided by the functions R-function {completeDataDesignMatrix()} and R-function {CovMat.Design()}. The complete data design matrix has the size of (Number of cluster x cluster size x Number of time points) rows and (Number of model parameters) columns. To sample the data from for a cluster randomized trial, it has additionally be specified, 
+A complete data set for a special design with a given setup can be sampled by the  function `sampleData()`. Therefore,the complete data design matrix and the covariance-variance matrix for the data given the design are also needed to be specified with `completeDataDesignMatrix()` and `CovMat.Design()`. The complete data design matrix has the size of (Number of cluster x cluster size x Number of time points) rows and (Number of model parameters) columns. To sample the data from for a cluster randomized trial, it has additionally be specified, 
 if the individuals are followed over time (longitudinal design) or not (cross-sectional design).
-
 
 
 ```{r}
@@ -148,12 +143,9 @@ xtabs(~cluster+measurement, data=sample.data)
 ```
 
 
-
 ### Effect estimation from the data
 
-The sampled data can then be analyzed by a **linear mixed model** with the function 
-R-function{lmer()} of the package R-package {lme4}, hence the parameter of the model will be estimated. 
-
+The sampled data can then be analyzed by a **linear mixed model** with `lme4::lmer()`, where the parameter of the model will be estimated. 
 
 ```{r}
 
@@ -167,8 +159,8 @@ through the simulation experiment within each scenario setting.
 
 ## Determine differrent design matrices {#sec-determinediffdesignmatrix} 
 
-The function `designMatrix` of the R-package {samplingDataCRT}
-provides the design matrix of cluster randomized trials with several study designs, 
+The function `designMatrix()` of the R-package {samplingDataCRT}
+provides the design matrix of cluster randomized trials with several study designs,
 given the number of clusters, time points and cluster size assumed for the trial.
 We show here for two examples:
 
@@ -179,8 +171,8 @@ We show here for two examples:
 
 ### Parallel cluster randomized trials
 
-Within the function the `design` argument is set 'parallel', 
-and the parameter `nSW` indicates the number of clusters are being control group. 
+Within the function the `design` argument is set to 'parallel',  
+and the parameter `nSW` indicates the number of clusters that are being control group. 
 
 ```{r design-prll}
 ## Design paramter ##
@@ -200,7 +192,7 @@ Sw <- round(I / 2) # number of cluster within the control group
 ### Stepped wedge cluster randomized trial
 
 Whereas the design parameters can be the same as in the parallel study the design 
-matrix differs accordingly when changing the argument `design = "SWD"` (which is also set by default, so it has not to be specified).  The parameter 'nSW' indicates here the number of cluster switches per time point from control to intervention group.
+matrix differs accordingly when changing the argument `design = "SWD"` (which is also set by default, so it has not to be specified). The parameter 'nSW' indicates here the number of cluster switches per time point from control to intervention group.
 
 ```{r design-params}
 ## Design matrix ##
@@ -219,7 +211,7 @@ Sw <- 1 # number of cluster switches per time point can be manually set
 ## Determine different fidelity patterns {#sec-fidpatterns} 
 
 Fidelity refers to the degree to which an intervention was implemented as it was prescribed or intended. 
-We aim to include different patterns of how fidelity might increase over time to estimate the respective effects on power of the study. To describe hypothetical fidelity patterns of increasing fidelity (slow, linear, fast) different mathematical functions (i.e. logistic, linear and exponential curves) are implemented. By considering different values for the slope parameter we can cover a range of fidelity patterns. The slope parameter ranges form $(0,\infty)$, where a slope parameter near to $0$ indicates a increase far away from a linear (fast increase upper left corner, slow increase right bottom corner curve) and a great slope parameter near to linear (See figure @fig-pattern ). 
+We aim to include different patterns of how fidelity might increase over time to estimate the respective effects on power of the study. To describe hypothetical fidelity patterns of increasing fidelity (slow, linear, fast) different mathematical functions (i.e. logistic, linear and exponential curves) are implemented. By considering different values for the slope parameter we can cover a range of fidelity patterns. The slope parameter ranges form $(0,\infty)$, where a slope parameter near to $0$ indicates a increase far away from a linear (fast increase upper left corner, slow increase right bottom corner curve) and a great slope parameter near to linear (see @fig-pattern ). 
 
 
 ```{r patterns, eval=TRUE}
@@ -268,8 +260,6 @@ res.plot.Patterns<-rbind(res.plot.Patterns, data.frame(res.lin, FUN="linear",
 
 ```{r fig-pattern, echo=FALSE, fig.cap="Patterns of a fidelity increase (fast, linear or slow) over 6 times points"}
 
-#no need to show the reader, isn't it?
-
 #data.frame for plot
 res.plot.Patterns$slope<-as.factor(res.plot.Patterns$slope)
 res.plot.Patterns<-data.frame(res.plot.Patterns, 
@@ -301,8 +291,8 @@ scale_y_continuous(labels=c("Start", 'End'), breaks=c(Fid.T1,Fid.End)*100)
     
 ```
 
-For our calculation within the simulation we use then these determined fractional values of intervention effects to define the degree of deviation from 100% implementation within the design matrix.
-Technically 3 functions in the R-package {fidelitysim} provides the implementation of the different patterns of fidelity. To create a corresponding design matrix using the fidelity patterns also a function is provided for each design.
+For our calculation within the simulation we use the determined fractional values of intervention effects to define the degree of deviation from 100% implementation within the design matrix.
+Three functions in {fidelitysim} provide the implementation of the different patterns of fidelity.
 
 
 ### Slow increase of fidelity using exponential function
@@ -349,6 +339,7 @@ Fid.End<-0.8
 
 #slope for linear function
 m<-(Fid.T1-Fid.End)/(1-(K-1))
+
 #linear increase
 (res.lin<-fidelitysim::find.Fidelity.linear(time.points=K, Fid.End, Fid.T1))
 # design matrix of a learning impelementation pattern, linear
