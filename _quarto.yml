@@ -5,10 +5,10 @@ book:
   title: "Fidelity in Hybrid Implementation Trials: Technical Guidance for 
     Implementation Researchers"
   author: 
-    - name: "Diana Trutschel"
-    - name: "Catherine Blatter"
-    - name: "Michael Simon"
-    - name: "Thekla Brunkert"
+    - name: "Diana Trutschel [ORCID: 0000-0002-1727-9736]"
+    - name: "Catherine Blatter [ORCID: 0000-0002-4069-7178]"
+    - name: "Michael Simon [ORCID: 0000-0003-2349-7219]"
+    - name: "Thekla Brunkert [ORCID: 0000-0002-0369-1826]"
   date: today
   chapters:
     - index.qmd

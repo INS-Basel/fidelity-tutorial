@@ -19,7 +19,7 @@ knitr::include_graphics("img/workflow_2.png")
 
 According to the inner frame of @fig-workflow, several specifications have to be made to evaluate the performance of a cluster randomized trial (design choice) with possible implementation error (fidelity pattern). 
 
-Within each simulation-experiment, the steps data sampling and effect estimation will be repeated (further explanation see @sec-statsdetails.) To simplify the process of the whole simulation-experiment, we packaged the code into the R package {fidelitysim}. 
+Within each simulation-experiment, the steps *data sampling* and *effect estimation* will be repeated (further explanation see @sec-statsdetails.) To simplify the process of the whole simulation-experiment, we packaged the code into the R package {fidelitysim}. 
 
 The function `fidelitysim::simulation()` includes the steps: data sampling for a specific design and existing implementation error, effect estimation, performance measures calculation and the following parameters are needed as arguments to the function:  
  
@@ -34,7 +34,7 @@ The outputs of the function are:
   - performance measures  
   
 After repeating the steps of the simulation the obtained effect estimates can be 
-evaluated for the performance of the model. The provided function `fidelitysim::performanceMeas()` calculates and provides the following performance measures of a simulation: 
+evaluated for the performance of the model. The following performance measures of a simulation are provided: 
 
 - Bias: mean deviation of the estimates from the true value of the parameter of 
   interest (intervention effect) is an indicator of accuracy  
@@ -73,13 +73,14 @@ and finally,
 ### Study design {#sec-studydesign}
 
 Based on the study setup, the following parameters for the study design need to be defined: 
+
 - No. of clusters (e.g hospitals)
 - No. of individuals per cluster (and time point) as the cluster size
 - No. of time points the cluster were followed
-- Design type controls if individuals will be followed over time (cross-sectional or longitudinal): cross-sectional type, which indicates trials where individuals within the cluster can change over time points  
+- Design type controls if individuals will be followed over time (cross-sectional or longitudinal): cross-sectional type, which indicates trials where individuals within the cluster can change over time points (however this design indicator is not necessary for conducting the design matrix)
 
 A design matrix according the study design has to be determined by the function `designMatrix()`. Here, two arguments are specific for the different types of studies. If the `design = 'parallel'`, then the parameter `nSW` indicates the number of clusters as being the control group. 
-If choosing `design = 'SWD'` (which is also set by default), the he parameter `nSW` indicates the number of cluster-switches per time point from control to intervention group.
+If choosing `design = 'SWD'` (which is also set by default), the parameter `nSW` indicates the number of cluster-switches per time point from control to intervention group (which highly dependent on the number of clusters and time points).
 
 For our example we will use the following parameter: 
 
@@ -99,7 +100,8 @@ I <- 6      # number of clusters
 J <- 10     # number of individuals per cluster (used later in simulation-step)
 K <- 7      # number of time points
 Sw <- 1     # number of cluster switches per time point can be manually set
-type <- "cross-sec"
+type <- "cross-sec" #Cross-sectional design, indicates that 
+#individuals within the cluster can change over time points
 
 # design matrix for parallel design
 (designMat_prll <- designMatrix(
@@ -173,7 +175,7 @@ In addition to the design parameters, we have to define the following model para
 
 - Baseline mean of the outcome of interest (e.g. mean quality of life score) $\mu_0$
 - Intervention effect (the change of scores after intervention) $\Theta$
-- Inter-cluster correlation coefficient ICC (between cluster and error variance $\sigma_c$, $\sigma_e$ )  
+- Intra-cluster correlation coefficient ICC (between cluster and error variance $\sigma_c$, $\sigma_e$ )  
 -	If applicable: time trend (effect of each time point during followed time points)  
 
 These values are usually chosen based on expert knowledge.  

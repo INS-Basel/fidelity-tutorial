@@ -37,8 +37,8 @@ To specify a cluster randomized study the following parameter has to be determin
 
 Based on the example in the main article, we specify a hypothetical example 
 including parameter settings for a reference setup of the simulation experiment: 
-*a cross-sectional stepped wedge cluster randomized trial with 10 nursing homes, 
-6 time points and 10 individuals* within each nursing home and time point (see main article). 
+*a cross-sectional stepped wedge cluster randomized trial with 6 nursing homes, 
+7 time points and 10 individuals* within each nursing home and time point (see main article). 
 All parameters can be adapted to an own practical example. 
 The resulting reference design matrix can be create manually (by create a corresponding matrix) or by `designMatrix()`.
 
