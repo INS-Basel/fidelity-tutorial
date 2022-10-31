@@ -2,8 +2,7 @@ project:
   type: book
 
 book:
-  title: "Fidelity in Hybrid Implementation Trials: Technical Guidance for 
-    Implementation Researchers"
+  title: "The unrecognized role of fidelity in hybrid effectiveness-implementation trials: simulation study and guidance for implementation researchers"
   author: 
     - name: "Diana Trutschel [ORCID: 0000-0002-1727-9736]"
     - name: "Catherine Blatter [ORCID: 0000-0002-4069-7178]"

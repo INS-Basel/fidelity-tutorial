@@ -5,19 +5,19 @@ The following chapter is separated in two parts:
 1. Simulation experiment for one setting by choosing between
       - Parallel or stepped wedge designs   
       - Studies with different fidelity patterns
-2. Simulation experiments to comparison of several fidelity patterns
+2. Simulation experiments to compare of several fidelity patterns
 
 @fig-workflow provides an overview of the simulation workflow.
 
 ```{r, out.width='80%', echo = F}
 #| fig-cap: "Overview of simulation workflow"
 #| label: fig-workflow 
-knitr::include_graphics("img/workflow_2.png")
+knitr::include_graphics("img/workflow_3.png")
 ```
 
 ## Simulation experiment for one setting {#sec-simintro}
 
-According to the inner frame of @fig-workflow, several specifications have to be made to evaluate the performance of a cluster randomized trial (design choice) with possible implementation error (fidelity pattern). 
+According to the inner frame of @fig-workflow, several specifications have to be made to evaluate the performance of a chosen design and fidelity pattern. 
 
 Within each simulation-experiment, the steps *data sampling* and *effect estimation* will be repeated (further explanation see @sec-statsdetails.) To simplify the process of the whole simulation-experiment, we packaged the code into the R package {fidelitysim}. 
 
@@ -178,7 +178,7 @@ In addition to the design parameters, we have to define the following model para
 - Intra-cluster correlation coefficient ICC (between cluster and error variance $\sigma_c$, $\sigma_e$ )  
 -	If applicable: time trend (effect of each time point during followed time points)  
 
-These values are usually chosen based on expert knowledge.  
+<!-- These values are usually chosen based on expert knowledge.   -->
 
 For our example we use the following model parameter: 
 
@@ -258,8 +258,8 @@ end_time <- Sys.time()
 time.sim <- round(as.numeric((end_time - start_time), units = "mins"),2)
 ```
 
+For this design setting and number of iteration (n=`r anzSim`), a computational time of `r time.sim` min is needed
 
-(To notice, repeating the simulation `r anzSim` times for this design a computational time of `r time.sim` min is needed.)
 
 The output of the simulation provides a total of n =`r length(res.Simu.parallel.lin)` results, among the following performance parameters (see also @sec-simintro): 
 
@@ -282,7 +282,7 @@ round(res.Simu.parallel.lin["Power.Intervention"],3)
 pow.par.lin<-round(res.Simu.parallel.lin["Power.Intervention"],3)
 ```
 
-We obtain a power of `r pow.par.lin` to detect an intervention effect of `r theta` within an parallel study with `r I` clusters followed `r K` time points and a cluster size of `r J` when an linear increase of the fidelity from `r Fid.T1*100` % to `r Fid.End*100` is achieved until end of the study.
+We obtain a power of `r pow.par.lin` to detect an intervention effect of `r theta` within an parallel study with `r I` clusters followed `r K` time points and a cluster size of `r J` when an linear increase of the fidelity from `r Fid.T1*100`% to `r Fid.End*100`% is achieved until end of the study.
 
 ## Comparison of several Fidelity patterns
 

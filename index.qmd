@@ -13,7 +13,7 @@ Consequently, the content is split in the following chapters:
 - Chapter 1 gives an overview of the technical requirements
 
 - Chapter 2 describes the step-by-step approach how to conduct the simulation for a specific research study,
-  based on parallel or stepped wedge CRTs, and furthermore show the comparison of several fidelity patterns 
+  based on parallel or stepped wedge CRTs, and furthermore shows the comparison of several fidelity patterns 
 
  - Chapter 3 provides optional statistical information (for a detailed understanding of the method)
 
