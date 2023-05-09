@@ -1,9 +1,13 @@
-README
-================
+# README
 
 ## Fidelity tutorial
 
-Tutorial and additional information to \[name of paper\]
+Tutorial and additional information to the paper “The unrecognized role
+of fidelity in effectiveness-implementation hybrid trials: simulation
+study and guidance for implementation researchers”, by Trutschel et
+al. (2023): https://doi.org/10.21203/rs.3.rs-2219404/v1 .
+
+<details>
 
 ## How to work on this repo?
 
@@ -37,3 +41,5 @@ Tutorial and additional information to \[name of paper\]
 8)  If you have installed additional packages, call `renv::snapshot()`
     to add these to the lockfile, so that others can do 4) on their
     machines and have the same packages and versions as you do. Thanks!
+
+\</details)

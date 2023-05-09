@@ -12,7 +12,7 @@ The following chapter is separated in two parts:
 ```{r, out.width='80%', echo = F}
 #| fig-cap: "Overview of simulation workflow"
 #| label: fig-workflow 
-knitr::include_graphics("img/workflow_3.png")
+knitr::include_graphics("img/workflow_2.png")
 ```
 
 ## Simulation experiment for one setting {#sec-simintro}
