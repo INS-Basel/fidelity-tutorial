@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.54">
+<meta name="generator" content="quarto-1.4.8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -191,8 +191,8 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#required-r-packages" id="toc-required-r-packages" class="nav-link active" data-scroll-target="#required-r-packages"><span class="header-section-number">1.1</span> Required R packages</a></li>
-  <li><a href="#other-considerations" id="toc-other-considerations" class="nav-link" data-scroll-target="#other-considerations"><span class="header-section-number">1.2</span> Other considerations</a></li>
+  <li><a href="#required-r-packages" id="toc-required-r-packages" class="nav-link active" data-scroll-target="#required-r-packages">Required R packages</a></li>
+  <li><a href="#other-considerations" id="toc-other-considerations" class="nav-link" data-scroll-target="#other-considerations">Other considerations</a></li>
   </ul>
 </nav>
     </div>
@@ -226,7 +226,7 @@ It is available from here: <a href="https://www.rstudio.com/products/rstudio/dow
 <p>Both R and RStudio (as well as further used R packages) are free software.</p>
 <p>To follow this tutorial, we assume basic familiarity with the use of the R language.</p>
 <section id="required-r-packages" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="required-r-packages"><span class="header-section-number">1.1</span> Required R packages</h2>
+<h2 data-number="1.1" class="anchored" data-anchor-id="required-r-packages">Required R packages</h2>
 <p>The following R packages are needed to run the simulation:</p>
 <ul>
 <li>{fidelitysim} <span class="citation" data-cites="R-fidelitysim">(<a href="references.html#ref-R-fidelitysim" role="doc-biblioref">Trutschel and Blatter 2022</a>)</span> - holds packaged code for the simulation experiment</li>
@@ -256,7 +256,7 @@ It is available from here: <a href="https://www.rstudio.com/products/rstudio/dow
 </div>
 </section>
 <section id="other-considerations" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="other-considerations"><span class="header-section-number">1.2</span> Other considerations</h2>
+<h2 data-number="1.2" class="anchored" data-anchor-id="other-considerations">Other considerations</h2>
 <p>The local simulation can - depending on the number of clusters and the computational power - take up to 10-12 hours when the commenly recommended number of iterations of 10,000 is used. We suggest the user to start own simulations with a small number and than increase, when it is clear the code is running.</p>
 
 
@@ -386,6 +386,30 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, function() {
+      let href = xref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children.length > 2) {
+          for (let i = 0; i < 2; i++) {
+            container.appendChild(note.children[i].cloneNode(true));
+          }
+          return container.innerHTML
+        } else {
+          return note.innerHTML;
+        }
+      } else {
+        return note.innerHTML;
+      }
     });
   }
       let selectedAnnoteEl;

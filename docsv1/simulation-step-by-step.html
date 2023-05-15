@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.54">
+<meta name="generator" content="quarto-1.4.8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -174,15 +174,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-simintro" id="toc-sec-simintro" class="nav-link active" data-scroll-target="#sec-simintro"><span class="header-section-number">2.1</span> Simulation experiment for one setting</a>
+  <li><a href="#sec-simintro" id="toc-sec-simintro" class="nav-link active" data-scroll-target="#sec-simintro">Simulation experiment for one setting</a>
   <ul class="collapse">
-  <li><a href="#sec-studydesign" id="toc-sec-studydesign" class="nav-link" data-scroll-target="#sec-studydesign"><span class="header-section-number">2.1.1</span> Study design</a></li>
-  <li><a href="#assumptions-about-fidelity-pattern" id="toc-assumptions-about-fidelity-pattern" class="nav-link" data-scroll-target="#assumptions-about-fidelity-pattern"><span class="header-section-number">2.1.2</span> Assumptions about fidelity pattern</a></li>
-  <li><a href="#sec-modelparam" id="toc-sec-modelparam" class="nav-link" data-scroll-target="#sec-modelparam"><span class="header-section-number">2.1.3</span> Specifying model parameter</a></li>
-  <li><a href="#defining-number-of-iterations-for-the-simulation" id="toc-defining-number-of-iterations-for-the-simulation" class="nav-link" data-scroll-target="#defining-number-of-iterations-for-the-simulation"><span class="header-section-number">2.1.4</span> Defining number of iterations for the simulation</a></li>
-  <li><a href="#sec-simulexp" id="toc-sec-simulexp" class="nav-link" data-scroll-target="#sec-simulexp"><span class="header-section-number">2.1.5</span> Simulation experiment</a></li>
+  <li><a href="#sec-studydesign" id="toc-sec-studydesign" class="nav-link" data-scroll-target="#sec-studydesign">Study design</a></li>
+  <li><a href="#assumptions-about-fidelity-pattern" id="toc-assumptions-about-fidelity-pattern" class="nav-link" data-scroll-target="#assumptions-about-fidelity-pattern">Assumptions about fidelity pattern</a></li>
+  <li><a href="#sec-modelparam" id="toc-sec-modelparam" class="nav-link" data-scroll-target="#sec-modelparam">Specifying model parameter</a></li>
+  <li><a href="#defining-number-of-iterations-for-the-simulation" id="toc-defining-number-of-iterations-for-the-simulation" class="nav-link" data-scroll-target="#defining-number-of-iterations-for-the-simulation">Defining number of iterations for the simulation</a></li>
+  <li><a href="#sec-simulexp" id="toc-sec-simulexp" class="nav-link" data-scroll-target="#sec-simulexp">Simulation experiment</a></li>
   </ul></li>
-  <li><a href="#comparison-of-several-fidelity-patterns" id="toc-comparison-of-several-fidelity-patterns" class="nav-link" data-scroll-target="#comparison-of-several-fidelity-patterns"><span class="header-section-number">2.2</span> Comparison of several Fidelity patterns</a></li>
+  <li><a href="#comparison-of-several-fidelity-patterns" id="toc-comparison-of-several-fidelity-patterns" class="nav-link" data-scroll-target="#comparison-of-several-fidelity-patterns">Comparison of several Fidelity patterns</a></li>
   </ul>
 </nav>
     </div>
@@ -228,7 +228,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <section id="sec-simintro" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="sec-simintro"><span class="header-section-number">2.1</span> Simulation experiment for one setting</h2>
+<h2 data-number="2.1" class="anchored" data-anchor-id="sec-simintro">Simulation experiment for one setting</h2>
 <p>According to the inner frame of <a href="#fig-workflow" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>, several specifications have to be made to evaluate the performance of a chosen design and fidelity pattern.</p>
 <p>Within each simulation-experiment, the steps <em>data sampling</em> and <em>effect estimation</em> will be repeated (further explanation see <a href="additional-statistical-info.html" class="quarto-xref"><span>Chapter&nbsp;3</span></a>.) To simplify the process of the whole simulation-experiment, we packaged the code into the R package {fidelitysim}.</p>
 <p>The function <code>fidelitysim::simulation()</code> includes the steps: data sampling for a specific design and existing implementation error, effect estimation, performance measures calculation and the following parameters are needed as arguments to the function:</p>
@@ -271,7 +271,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>the simulation experiment can be performed.</li>
 </ol>
 <section id="sec-studydesign" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="sec-studydesign"><span class="header-section-number">2.1.1</span> Study design</h3>
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="sec-studydesign">Study design</h3>
 <p>Based on the study setup, the following parameters for the study design need to be defined:</p>
 <ul>
 <li>No.&nbsp;of clusters (e.g hospitals)</li>
@@ -317,7 +317,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="assumptions-about-fidelity-pattern" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="assumptions-about-fidelity-pattern"><span class="header-section-number">2.1.2</span> Assumptions about fidelity pattern</h3>
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="assumptions-about-fidelity-pattern">Assumptions about fidelity pattern</h3>
 <p>The following step is a central part of this tutorial. We want to examine different fidelity patterns and their implications for the study effects.</p>
 <p>To simulate a specific fidelity pattern, a second design matrix indicating the pattern of fidelity has to be provided and indicates if there are deviations from the perfect situation (100% fidelity) present or not. For the simulation we have to add fractional values according to the chosen fidelity pattern. There are 3 functions within the R-package {fidelitysim} that can be used to specify several fidelity patterns. The patterns can be specified based on a slow, linear or fast increase and the respective start and end value for fidelity. For further explanation of fidelity patterns see <a href="additional-statistical-info.html#sec-fidpatterns" class="quarto-xref"><span>Section&nbsp;3.3</span></a>. The selected fidelity patterns can then be pushed to the design matrix with the R-package {samplingDataCRT}, for more explanation see <a href="additional-statistical-info.html#sec-determinediffdesignmatrix" class="quarto-xref"><span>Section&nbsp;3.2</span></a>.</p>
 <p>For our example we use the same design parameters, i.e.&nbsp;parallel cluster randomized trial, 6 timepoints, etc. and assume a linear increase of fidelity from 40% to 80% from the first measurement point after introduction of the intervention to the final measurement point (time point <code>K</code>). Based on these parameters we will create a new design matrix <code>X.A</code> that incorporates fractional values based on the provided fidelity pattern. This new design matrix will be used as a reference matrix in our simulation.</p>
@@ -366,7 +366,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This matrix reflect the fidelity pattern including the implementation error (deviation form 100%). Both design matrices are later used for the simulation as arguments <code>X = designMat_prll</code> and <code>X.A = fidelMat_prll</code> for simulation <a href="#sec-simulexp" class="quarto-xref"><span>Section&nbsp;2.1.5</span></a>. In a <em>perfect</em> situation - where we assume 100% fidelity at every time point, both matrices are the same.</p>
 </section>
 <section id="sec-modelparam" class="level3" data-number="2.1.3">
-<h3 data-number="2.1.3" class="anchored" data-anchor-id="sec-modelparam"><span class="header-section-number">2.1.3</span> Specifying model parameter</h3>
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="sec-modelparam">Specifying model parameter</h3>
 <p>In addition to the design parameters, we have to define the following model parameters as well:</p>
 <ul>
 <li>Baseline mean of the outcome of interest (e.g.&nbsp;mean quality of life score) <span class="math inline">\(\mu_0\)</span></li>
@@ -406,7 +406,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>When choosing a longitudinal instead of a cross-sectional design a third variance needs to be specified (see for more detail into <a href="additional-statistical-info.html#sec-sampdatacrt" class="quarto-xref"><span>Section&nbsp;3.1.2</span></a>).</p>
 </section>
 <section id="defining-number-of-iterations-for-the-simulation" class="level3" data-number="2.1.4">
-<h3 data-number="2.1.4" class="anchored" data-anchor-id="defining-number-of-iterations-for-the-simulation"><span class="header-section-number">2.1.4</span> Defining number of iterations for the simulation</h3>
+<h3 data-number="2.1.4" class="anchored" data-anchor-id="defining-number-of-iterations-for-the-simulation">Defining number of iterations for the simulation</h3>
 <p>In addition to the parameters set above, we need to define the number of iterations for the simulation. The number determines how often the sampling and estimation should be repeated to finally calculate the performance measures. In the literature 10,000 and 100,000 iterations are recommended to obtain valid results, however, this validity comes at a time cost. In our example we will set n = 1,000 iterations with regard to the computing time (and can be set by the user under consideration of their machine’s computational power).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Number of iterations of the simulation ##</span></span>
@@ -414,7 +414,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="sec-simulexp" class="level3" data-number="2.1.5">
-<h3 data-number="2.1.5" class="anchored" data-anchor-id="sec-simulexp"><span class="header-section-number">2.1.5</span> Simulation experiment</h3>
+<h3 data-number="2.1.5" class="anchored" data-anchor-id="sec-simulexp">Simulation experiment</h3>
 <p>Since we set all necessary arguments for the usage of the provided simulation function:</p>
 <ol type="1">
 <li>Study design</li>
@@ -433,7 +433,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">X =</span> designMat_prll, <span class="at">X.A =</span> fidelMat_prll <span class="co">#design matrices</span></span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>For this design setting and number of iteration (n=1000), a computational time of 2.21 min is needed</p>
+<p>For this design setting and number of iteration (n=1000), a computational time of 3.01 min is needed</p>
 <p>The output of the simulation provides a total of n =22 results, among the following performance parameters (see also <a href="#sec-simintro" class="quarto-xref"><span>Section&nbsp;2.1</span></a>):</p>
 <ul>
 <li>Bias</li>
@@ -459,7 +459,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="comparison-of-several-fidelity-patterns" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="comparison-of-several-fidelity-patterns"><span class="header-section-number">2.2</span> Comparison of several Fidelity patterns</h2>
+<h2 data-number="2.2" class="anchored" data-anchor-id="comparison-of-several-fidelity-patterns">Comparison of several Fidelity patterns</h2>
 <p>To compare the effect of different fidelity patterns, a repetition of the simulation has to be conducted.</p>
 <p>We will continue with our example from before (see <a href="#sec-studydesign" class="quarto-xref"><span>Section&nbsp;2.1.1</span></a> - <a href="#sec-modelparam" class="quarto-xref"><span>Section&nbsp;2.1.3</span></a>) and examine in total seven different fidelity patterns. We will assume (A) three types of slow increases, (B) one linear increase and (C) three types of fast increases of fidelity for this design setting (see <a href="additional-statistical-info.html#sec-fidpatterns" class="quarto-xref"><span>Section&nbsp;3.3</span></a> for further explanation) and compare with the perfect situation.</p>
 <!-- ####### -->
@@ -693,6 +693,30 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, function() {
+      let href = xref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children.length > 2) {
+          for (let i = 0; i < 2; i++) {
+            container.appendChild(note.children[i].cloneNode(true));
+          }
+          return container.innerHTML
+        } else {
+          return note.innerHTML;
+        }
+      } else {
+        return note.innerHTML;
+      }
     });
   }
       let selectedAnnoteEl;

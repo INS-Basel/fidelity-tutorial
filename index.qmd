@@ -4,7 +4,7 @@ This online tutorial serves as a hands-on guide for researchers
 to replicate the simulation described in 
 
 "The unrecognized role of fidelity in effectiveness-implementation hybrid trials: simulation study and guidance for implementation researchers", 
-by Trutschel et al. .  
+by Trutschel et al.    
 
 This supplementary material was designed to support applied 
 researchers to adapt the simulation with required 
@@ -24,7 +24,12 @@ Consequently, the content is split in the following chapters:
 If you find this work helpful, please cite both the online tutorial 
 and the paper by the reference of the original paper as in: 
 
-[add citation once available]
+**The unrecognized role of fidelity in effectiveness-implementation hybrid trials: 
+simulation study and guidance for implementation researchers**. Trutschel et al.
+*BMC Medical Research Methodology* (2023) 23:116. 
+https://doi.org/10.1186/s12874-023-01943-3  
+
+
 
 
 

@@ -2,10 +2,15 @@
 
 ## Fidelity tutorial
 
-Tutorial and additional information to the paper “The unrecognized role
-of fidelity in effectiveness-implementation hybrid trials: simulation
-study and guidance for implementation researchers”, by Trutschel et
-al. (2023): https://doi.org/10.21203/rs.3.rs-2219404/v1 .
+Tutorial and additional information to the publication:
+
+**The unrecognized role of fidelity in effectiveness-implementation
+hybrid trials: simulation study and guidance for implementation
+researchers**. Trutschel et al. *BMC Medical Research Methodology*
+(2023) 23:116. https://doi.org/10.1186/s12874-023-01943-3
+
+Tutorial accessible online here:
+https://ins-basel.github.io/fidelity-tutorial
 
 <details>
 
